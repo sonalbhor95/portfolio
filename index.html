@@ -1,654 +1,1268 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMBV1J41CM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMBV1J41CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PMBV1J41CM');
+  </script>
 
-  gtag('config', 'G-PMBV1J41CM');
-</script>
-	
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sonal Bhor — Data Scientist & ML Engineer. 6+ years of experience in Python, machine learning, NLP, and data engineering.">
+  <meta name="keywords" content="Sonal Bhor, Data Scientist, ML Engineer, Python, Machine Learning, NLP, Tableau, Portfolio">
+  <title>Sonal Bhor · Data Scientist</title>
 
-  <title>Sonal Bhor's Portfolio</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    :root {
+      --bg:        #0b0f1a;
+      --bg2:       #111827;
+      --bg3:       #1a2235;
+      --surface:   #1f2d45;
+      --border:    rgba(255,255,255,0.08);
+      --border2:   rgba(255,255,255,0.14);
+      --text:      #e8edf5;
+      --muted:     #7a8aaa;
+      --accent:    #6ee7b7;       /* teal-green */
+      --accent2:   #818cf8;       /* indigo */
+      --accent3:   #f472b6;       /* pink */
+      --serif:     'Fraunces', Georgia, serif;
+      --sans:      'Plus Jakarta Sans', sans-serif;
+      --mono:      'DM Mono', monospace;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    a { color: inherit; text-decoration: none; }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.7.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    /* ─── SCROLLBAR ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bg) !important;
+      background: var(--accent);
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85 !important; color: var(--bg) !important; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 5rem;
+      max-width: 1200px; margin: 0 auto;
+      gap: 4rem;
+    }
+    .hero-left { flex: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      border: 1px solid rgba(110,231,183,0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.08em;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .hero-name span { color: var(--accent); font-style: italic; }
+    .hero-role {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: #8fa3c0;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; color: var(--bg); }
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid var(--border2);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(110,231,183,0.06); }
+
+    .hero-right {
+      flex: 0 0 340px;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .hero-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+    }
+    .hero-stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+    .hero-social {
+      display: flex; gap: 0.75rem;
+    }
+    .social-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--accent2); color: var(--text); }
+    .social-btn svg { width: 16px; height: 16px; }
+
+    /* ─── SECTIONS ──────────────────────────────────────────────── */
+    .section {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: flex; align-items: center; gap: 1rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border2);
+      max-width: 60px;
+    }
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+    .section-heading em { color: var(--accent); font-style: italic; }
+
+    /* ─── SKILLS ────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .skill-card {
+      background: var(--bg2);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--bg3); }
+    .skill-card-icon {
+      width: 40px; height: 40px;
+      background: rgba(110,231,183,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 20px;
+    }
+    .skill-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+      padding: 3px 10px;
+      border-radius: 5px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .skill-card:hover .tag { border-color: rgba(110,231,183,0.25); }
+    .tag.hl { color: var(--accent); border-color: rgba(110,231,183,0.35); background: rgba(110,231,183,0.06); }
+
+    /* ─── EXPERIENCE ────────────────────────────────────────────── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-left {}
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .exp-company-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--accent);
+      background: rgba(110,231,183,0.1);
+      border: 1px solid rgba(110,231,183,0.2);
+      padding: 2px 10px;
+      border-radius: 5px;
+      letter-spacing: 0.05em;
+    }
+    .exp-right {}
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+    .exp-location {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .exp-bullets li {
+      font-size: 14px;
+      color: #8fa3c0;
+      line-height: 1.7;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 12px;
+      top: 3px;
+    }
+    .exp-bullets li b { color: var(--text); font-weight: 600; }
+    .exp-toggle {
+      margin-top: 1rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent2);
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      letter-spacing: 0.05em;
+    }
+    .exp-toggle:hover { text-decoration: underline; }
+    .exp-extra { display: none; }
+    .exp-extra.open { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.65rem; }
+
+    /* ─── PROJECTS ──────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, rgba(110,231,183,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .project-card:hover { border-color: rgba(110,231,183,0.3); transform: translateY(-3px); }
+    .project-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    .project-desc {
+      font-size: 13px;
+      color: #7a8aaa;
+      line-height: 1.75;
+      flex: 1;
+    }
+    .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .project-metric {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .project-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 4px;
+      transition: color 0.2s;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    /* ─── EDUCATION ─────────────────────────────────────────────── */
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+    }
+    .edu-degree {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .edu-school {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .edu-gpa {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .edu-courses {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .edu-courses li {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex; align-items: baseline; gap: 6px;
+    }
+    .edu-courses li::before { content: '—'; color: var(--border2); font-size: 10px; }
+
+    /* ─── CERTIFICATIONS ─────────────────────────────────────────── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cert-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      transition: border-color 0.2s;
+    }
+    .cert-item:hover { border-color: var(--accent2); }
+    .cert-dot {
+      width: 8px; height: 8px;
+      background: var(--accent2);
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .cert-name {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────────── */
+    #contact-wrap {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .contact-headline em { color: var(--accent); font-style: italic; }
+    .contact-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1px; }
+    .contact-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-arrow { color: var(--muted); font-size: 18px; transition: transform 0.2s; }
+    .contact-link:hover .contact-link-arrow { transform: translate(3px,-3px); color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .btn-send {
+      align-self: flex-start;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn-send:hover { transform: translateY(-2px); opacity: 0.9; }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 3rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--accent); }
+
+    /* ─── BACK TO TOP ───────────────────────────────────────────── */
+    .back-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 42px; height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 900;
+    }
+    .back-top.visible { opacity: 1; pointer-events: auto; }
+    .back-top:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .back-top svg { width: 18px; height: 18px; color: var(--text); }
+
+    /* ─── DIVIDER ───────────────────────────────────────────────── */
+    .full-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ─── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge   { animation: fadeUp 0.5s ease both 0.1s; }
+    .hero-name    { animation: fadeUp 0.6s ease both 0.2s; }
+    .hero-role    { animation: fadeUp 0.5s ease both 0.35s; }
+    .hero-desc    { animation: fadeUp 0.5s ease both 0.45s; }
+    .hero-btns    { animation: fadeUp 0.5s ease both 0.55s; }
+    .hero-right   { animation: fadeUp 0.7s ease both 0.4s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-mobile {
+        position: fixed; top: 60px; left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        display: none;
+        z-index: 998;
+      }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile a { font-size: 16px; font-weight: 600; color: var(--muted); }
+      .nav-mobile a:hover { color: var(--text); }
+
+      #hero { flex-direction: column; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+      .hero-right { flex: none; width: 100%; }
+      .section { padding: 4rem 1.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-name { font-size: 3rem; }
+      .hero-social { flex-wrap: wrap; }
+      .exp-item { padding: 1.75rem 0; }
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav>
+  <span class="nav-logo">SB // DS</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact-wrap" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-  <!-- ======= Header ======= -->
- <header id="header">
-    <div class="d-flex flex-column">
+<!-- Mobile menu -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#contact-wrap" onclick="closeMobile()">Contact</a>
+</div>
 
-      <div class="profile">
-        <img src="assets/img/sonal_img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Sonal Bhor</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.linkedin.com/in/sonalbhor/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-	  <a href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" class="tableau"><i class="bx bxs-bar-chart-alt-2"></i></a>
-	  <a href="https://github.com/sonalbhor95" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-
-
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Skills</span></a></li>
-          <li><a href="#experience" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Experience</span></a></li>
-          <li><a href="#projects" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Projects</span></a></li>
-	  <li><a href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Tableau</span></a></li>
-          <li><a href="#education" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Education</span></a></li>
-	  <li><a href="#certification" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Certification</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Open to DS &amp; ML roles · Phoenix, AZ</div>
+    <h1 class="hero-name">Sonal<br><span>Bhor</span></h1>
+    <p class="hero-role">Data Scientist · ML Engineer · BI Specialist</p>
+    <p class="hero-desc">
+      6+ years turning complex, high-volume data into decisions that matter — across automotive, retail, healthcare, and finance. Specialising in predictive modelling, NLP, computer vision, and scalable ML pipelines.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="mailto:sonalbhor95@gmail.com" class="btn-secondary">Get in Touch</a>
     </div>
-  </header><!-- End Header -->
+  </div>
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="row" data-aos="fade-in">
-        <div class="section-title">
-          <h2>About</h2>
-          <p>I enjoy working with data to uncover insights that inform business decisions and drive operational improvements. 
-	   With a solid background in data science analysis and visualization, my expertise lies in blending technical skills with strategic thinking to solve challenging problems 
-		  and deliver measurable results by identifying trends, patterns, and opportunities within large and complex datasets.</p>
-       
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years experience</div>
         </div>
-
-        <div class="row">
-          
-          <div class="col-lg-12 pt-lg-0 content" data-aos="fade-left">
-            <h3>Let's Collaborate</h3>
-            <p class="fst-italic"> </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 (313) 398 3912</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City/State:</strong> <span>Phoenix, Arizona, USA</span></li>
-                </ul>
-              </div>
-              
-              
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Education:</strong> <span>Master's in Data Science </span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong><a href="mailto:sonalbhor95@gmail.com" target="_blank"> <span>sonalbhor95@gmail.com</span></li></a>
-                  
-                </ul>
-              </div>
-              </div>
-          
-            <p>
-              <p>Data enthusiast with 6+ years of experience in Python, R, SQL, Tableau, Power BI, and Excel, skilled in uncovering insights and driving business growth. With expertise in statistics, machine learning, and predictive modeling, I excel at identifying trends and optimizing outcomes. </p>
-
-              <p>Passionate about exploring diverse data domains to generate impactful insights, I look forward to connecting and contributing to meaningful data-driven decisions..
-            </p>
-            <p>
-          
+        <div class="stat-item">
+          <div class="stat-num">200TB</div>
+          <div class="stat-label">Data processed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">92%</div>
+          <div class="stat-label">Model accuracy</div>
         </div>
       </div>
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-        <div class="container">
-          <div data-aos="fade-up">
-          <div class="section-title">
-            <h2>Skills</h2>
-         
-  
-          <div class="row" data-aos="fade-up" data-aos-delay="100">
-  
-            <div class="col-lg-12 d-flex align-items-stretch">
-              
-              <div class="info">
-                <div class="row">
-                  <div class="col-lg-4 col-md-4">
-                  <div class="Languages">
-                    
-                    <h4>Tools </h4>
-                    <ul>
-                      <li>Python, R, Scikit-Learn, SciPy, OpenCV</li>
-                      <li> Git, Github</li>
-		      <li>Agile, JIRA, Scrum</li>
-		      <li> SAP, Docker, ERP  </li>
-	
-                    </ul>
-                  </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4">
-                    <div class="Statistical Methods">
-                      
-                      <h4>Statistical Methods</h4>
-                      <ul>
-                        <li>Hypothesis Testing</li>
-			<li>A/B Testing</li>
-                        <li>Feature Selection</li>
-                        <li>Data Transforamtion</li>
-                        
-                       </ul>
-                    </div>
-                    </div>
-                  
-                  <div class="col-lg-4 col-md-4">
-                    <div class="Visualizations">
-                      
-                      <h4>Machine Leaning Models</h4>
-                      <ul>
-			<li>Regression, Classification, Predictive Modeling,  Sentiment Analysis, SVM</li>
-            		<li>Clustering, Time Series Forecasting, Decision Trees, Random Forest, K-Nearest Neighbor</li>
-            		<li>Recommendation Systems, NLP, Object Detection - Segmentation, Florence</li>
-                        
-                      
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  
-                  <div class="col-lg-4 col-md-4">
-                  <div class="Database">
-                    
-                    <h4>Database and Cloud Services</h4>
-                    <ul>
-                      <li> MySQL, AQL, PL/SQL </li>
-		      <li> Google BigQuery (GCP), AWS, Azure </li>
-		 
-                    </ul>
-                  </div>
-                  </div>
-
-                  <div class="col-lg-4 col-md-4">
-                    <div class="deployment">
-                      
-                      <h4>Analytical and Business Intelligence Tools</h4>
-                      <ul>
-			<li>Tableau, Power BI, Looker, QuickSight, QlikSense/QlikView, Excel, Grafana</li>
-            		<li>Seaborn, Plotly, Matplotlib</li>
-            		<li>Salesforce, Google Analytics, DOMO, Adobe Analytics, MicroStrategy</li>
-			
-
-  
-                      </ul>
-                    </div>
-		  </div>
-                </div>
-            </div>
-          </div>  
-          </div>
-          </div>
-        </div>
-        </div>
-      </section>
-      
-    </section><!-- End Skills Section -->
-
-  <!-- ======= Experience Section ======= -->
-<section id="experience" class="experience py-5">
-  <div class="container">
-    <div class="section-title">
-      <h2>Work Experience</h2>
     </div>
-    <div class="accordion" id="experienceAccordion">
 
-      <!-- Nikola -->
-      <div class="accordion-item border-top border-bottom">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-            Senior Data Analytics Engineer - Nikola Motor Company, AZ-USA | June 2024 - December 2024
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#experienceAccordion">
-          <div class="accordion-body">
-           <li><b>Data Aggregation & SQL-Based Processing</b> - Extracted and aggregated high-volume datasets from multiple sources to create structured, filtered, and grouped data pipelines using SQL. This enabled more accurate reporting and provided tangible inputs that streamlined decision-making for engineering teams.</li>
+    <div class="hero-social">
+      <a class="social-btn" href="https://www.linkedin.com/in/sonalbhor/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="social-btn" href="https://github.com/sonalbhor95" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a class="social-btn" href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="10.5" y="2" width="3" height="20" rx="1"/><rect x="2" y="10.5" width="20" height="3" rx="1"/><rect x="6.5" y="6.5" width="11" height="2" rx="1"/><rect x="6.5" y="15.5" width="11" height="2" rx="1"/></svg>
+        Tableau
+      </a>
+    </div>
+  </div>
+</div>
 
-		<li><b>Real-Time Fleet Monitoring with Grafana</b> - Led the integration of AWS S3 time-series data into Grafana dashboards, enabling real-time vehicle health and component performance monitoring—this enhanced visibility by 25%, allowing both engineers and truck drivers to proactively address maintenance issues.</li>
+<hr class="full-divider">
 
-		<li><b>Scalable Data Pipelines for High-Volume Cloud Storage</b> - Developed robust ETL pipelines in Python to manage and transform data stored in the cloud. These pipelines provided real-time access to cleaned and structured data, ensuring reliable inputs for ADAS feature development.</li>
+<!-- ══════════════════════ SKILLS ══════════════════════ -->
+<section class="section" id="skills">
+  <div class="section-label">01 · Skills</div>
+  <h2 class="section-heading">Technical <em>expertise</em></h2>
 
-		<li><b>Automated Sensor Data Processing</b> - Designed an automated workflow for sensor data extraction, labeling, and transfer from SSD disks. This automation, implemented in Python, drastically reduced data processing time from 5 days to 24 hours, ensuring faster iteration cycles for engineering teams.</li>
-
-		<li><b>Computer Vision & YOLO v8 for Image-Based KPI Identification</b> - Implemented the YOLO v8 deep learning model to extract and analyze key KPIs from camera images captured within the truck’s sensor suite. This involved processing over 200TB of visual data, allowing for real-time detection and categorization of critical ADAS performance indicators. The model was fine-tuned to detect road conditions, lane markings, obstacles, and vehicle interactions, contributing to improved ADAS decision-making and safety compliance.</li>
-
-		<li><b>Machine Learning Models for ADAS Perception</b> - Developed and optimized machine learning models, such as Segmentation and Florence, enabling vehicles to interpret and react to their environment. These models processed approximately 200TB of multi-sensor data, including Camera, SRR, LRR, MRR, and LiDAR, to enhance situational awareness and decision-making.</li>
-
-		<li><b>ADAS Feature Development & Performance Tuning</b> - Defined key ADAS KPIs, features, and functionalities based on market needs and safety regulations. Conducted calibration and fine-tuning of systems to ensure optimal performance while meeting stringent safety and reliability standards.</li>
-
-		<li><b>Collaboration with Simulation & Testing Teams</b> - Worked closely with simulation testing teams to diagnose and resolve issues identified during validation. This iterative process ensured higher accuracy in ADAS system performance before deployment in real-world scenarios.</li>
-          </div>
-        </div>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <h4>Machine Learning</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">Scikit-Learn</span>
+        <span class="tag hl">XGBoost</span>
+        <span class="tag hl">Random Forest</span>
+        <span class="tag">SVM</span>
+        <span class="tag">KNN</span>
+        <span class="tag">Decision Trees</span>
+        <span class="tag">Regression</span>
+        <span class="tag">Classification</span>
+        <span class="tag">Clustering</span>
       </div>
+    </div>
 
-      <!-- Ford -->
-      <div class="accordion-item border-bottom">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-            Data Engineer (BI) - Ford Motor Company, MI-USA | April 2023 - June 2024
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion">
-          <div class="accordion-body">
-          <li><b>Automated Backup Management & Notification System</b> - Developed an automated backup solution using SharePoint PowerShell, ensuring the seamless storage and retrieval of critical files. Integrated a notification system that programmatically sent update emails to relevant stakeholders and provided real-time alerts to administrators, reducing manual monitoring efforts.</li>
-
-<li><b>Optimized ETL Pipelines to Reduce On-Call Workload</b> - Designed and implemented enhanced logic checks to improve data validation and quality assurance within the ETL pipeline. These improvements resulted in a 60% reduction in on-call operations workload, significantly minimizing the need for manual intervention in data processing.</li>
-
-<li><b>Process Automation for Scrum Documentation</b> - Introduced automation solutions using Microsoft Macros to streamline weekly Scrum-to-Scrum business meeting documentation. This eliminated repetitive manual tasks, reducing document processing time by 80%, improving consistency, and allowing teams to focus on strategic discussions rather than administrative work.</li>
-
-<li><b>Migration of Alteryx Workflows to Google Cloud</b> - Translated complex Alteryx workflows into BigQuery SQL and Google Data Fusion pipelines, ensuring scalability, faster query execution, and better integration with cloud-based analytics workflows. This transition helped improve data processing efficiency and reduced dependency on legacy tools.</li>
-
-<li><b>Data Issue Resolution & Ad-Hoc Analysis</b> - Provided on-demand support by investigating and addressing data inconsistencies across multiple business functions. Responded to ad-hoc data requests with detailed analysis and actionable insights, ensuring timely decision-making for stakeholders.</li>
-
-<li><b>Privacy Compliance & Data Governance Improvements</b> - Partnered with cross-functional teams and data governance experts to design and implement privacy protocols for European data. This initiative led to a 25% reduction in data errors and ensured compliance with regulatory requirements across analytics processes.</li>
-
-<li><b>Metadata Management & Business Glossary Development</b> - Developed a Metadata Model and Business Glossary Dashboard in Qlik Sense and Looker, consolidating key business definitions and data relationships. This involved gathering inputs from business users, existing databases, and documentation, resulting in a centralized knowledge repository that improved data accessibility and governance.</li>
-<li><b>Developed and maintained integrated Tableau and Salesforce dashboards</b> - Combined data from BigQuery (GCP) and SAP systems to deliver real-time visibility into key sales metrics, including pipeline health, revenue performance, and order fulfillment status. These dashboards empowered sales leaders and customer-facing teams with up-to-date KPIs, improving responsiveness to regional demand fluctuations and accelerating data-driven decision-making during weekly business reviews.</li>      
-<li><b>Partnered with IT and Sales Operations teams</b> - Designed scalable reporting solutions that monitored the full sales funnel, from lead generation to deal closure, across multiple business units and regions. Enhanced visibility into opportunity progression and territory-level performance, which enabled sales managers to identify underperforming areas, allocate resources effectively, and track attainment against monthly and quarterly targets.</li>
-          </div>
-        </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🧠</div>
+      <h4>Deep Learning &amp; NLP</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">PyTorch</span>
+        <span class="tag hl">TensorFlow</span>
+        <span class="tag hl">YOLO v8</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Sentiment Analysis</span>
+        <span class="tag">NLTK</span>
+        <span class="tag">Object Detection</span>
+        <span class="tag">Florence</span>
+        <span class="tag">OpenCV</span>
       </div>
+    </div>
 
-      <!-- Bed Bath & Beyond -->
-      <div class="accordion-item border-bottom">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-            Data Analytics Engineer - Bed Bath & Beyond, NJ-USA | September 2021 - April 2023
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion">
-          <div class="accordion-body">
-            <li style="list-style-type: none; font-weight: bold;">1. Data-Driven Marketing Strategy & Dashboard Development</li>
-<li>Designed and implemented an end-to-end marketing analytics dashboard that ingested diverse datasets from multiple marketing channels. By utilizing Tableau and BigQuery, the dashboard streamlined campaign performance reviews, enabling faster insights and improving marketing efficiency by 30%.</li>
-<li>Created interactive visualizations and reports to track spending rates, paid channel efficiency, and key business KPIs, leading to a 10% improvement in data-driven decision-making across marketing teams.</li>
-<li>Managed data pipelines to ensure real-time campaign tracking, enabling leadership to optimize marketing spending across email, social, search, and display ads.</li>
-<li style="list-style-type: none; font-weight: bold;">2. Multi-Touch Attribution (MTA) & Performance Optimization.</li>
-<li>Developed a Multi-Touch Attribution (MTA) model to better understand customer interactions across email, social media, paid ads, and organic search. This led to a 30% increase in email channel performance and a 20% improvement in social media ROI, allowing the team to refine marketing strategies based on data-backed insights.</li>
-<li>Integrated first-touch and last-touch attribution (FTA & LTA) models to evaluate conversion journeys, helping marketers identify high-impact touchpoints and optimize customer acquisition strategies.</li>
-<li style="list-style-type: none; font-weight: bold;">3. A/B Testing & Customer Behavior Analysis</li>
-<li>Partnered with channel leads to conduct A/B testing for optimizing click-through rates (CTR), email engagement, and ad performance. By testing different messaging, designs, and targeting strategies, the team enhanced customer behavior insights across digital touchpoints and improved overall team productivity by 20%.</li>
-<li>Leveraged Adobe Analytics to assess marketing effectiveness across different regions, measuring engagement trends across Bed Bath & Beyond and its subsidiaries. This provided senior leadership with a holistic performance overview of multi-regional campaigns.</li>
-<li style="list-style-type: none; font-weight: bold;">4. Marketing Mix Modeling (MMM) & Spend Optimization</li> 
-<li>Designed a Marketing Mix Model (MMM) to evaluate the contribution of various marketing channels (organic, paid, email, social, TV, and print) to overall sales performance. This enabled budget reallocation to high-performing channels, improving return on investment (ROI) across campaigns.</li>
-<li>Analyzed seasonal trends and promotional effects using historical marketing data, enabling the team to forecast campaign performance and adjust marketing spending efficiently.</li>
-<li style="list-style-type: none; font-weight: bold;">5. Data Quality Assurance & Process Automation</li>
-<li>Streamlined the quality assurance process for marketing data using advanced automation techniques like PIVOT tables and SQL-based data aggregation. This automation significantly reduced the man-hours required for data audits by 94%, improving operational efficiency.</li>
-<li>Identified and resolved data inconsistencies in marketing reports, ensuring accurate tracking of customer journeys, ad conversions, and campaign effectiveness.</li>
-<li style="list-style-type: none; font-weight: bold;">6. Designed and deployed scalable, automated Salesforce dashboards and reports </li>
-<li> Supported day-to-day operations for Sales and Customer Service teams across 15+ store locations.</li>
-<li>Integrated real-time CRM data with key performance indicators, enabling leadership to track conversion rates, customer interactions, and sales targets more effectively. These dashboards significantly improved visibility into team performance, helping managers identify gaps and take data-informed actions that boosted overall productivity.</li>
-		      
-<li style="list-style-type: none; font-weight: bold;">7. Forecasting Sales</li>
-<li>Enhanced sales forecast accuracy by 25% by partnering with Finance and Sales teams to build predictive models using historical transaction and lead data. </li>
-<li>Utilized SQL for data extraction from internal databases and Excel-based statistical modeling to identify seasonal trends, deal patterns, and conversion probabilities. These insights were used in quarterly planning meetings to guide inventory decisions, budget allocations, and resource planning across departments.</li>
-          </div>
-        </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📊</div>
+      <h4>Statistical Methods</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">Hypothesis Testing</span>
+        <span class="tag hl">A/B Testing</span>
+        <span class="tag hl">Time Series</span>
+        <span class="tag">Predictive Modelling</span>
+        <span class="tag">Feature Selection</span>
+        <span class="tag">Forecasting</span>
+        <span class="tag">Regression Analysis</span>
+        <span class="tag">SciPy</span>
       </div>
+    </div>
 
-      <!-- Neogen -->
-      <div class="accordion-item border-bottom">
-        <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-            Data Analyst - Neogen Corporation, MI-USA | May 2021 - September 2023
-          </button>
-        </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion">
-          <div class="accordion-body">
-           <li style="list-style-type: none; font-weight: bold;">1. Customer Analytics & Website Data Insights</li> 
-<li>Conducted in-depth website data analysis using Google Analytics to uncover key insights into customer preferences, shopping behavior, and product trends. By analyzing user interactions, conversion funnels, and traffic sources, I provided valuable recommendations to optimize product placements and promotional strategies.</li>
-<li>Segmented customer behavior based on demographic, geographic, and engagement metrics, helping marketing teams design targeted campaigns that improve customer retention and conversion rates.</li>
-<li style="list-style-type: none; font-weight: bold;">2. Predictive Modeling & Revenue Growth</li>
-<li>Collaborated with cross-functional teams, including marketing, product, and data engineering, to develop predictive models that anticipated customer purchase behavior and optimized inventory management. These models contributed to a 20% increase in revenue by enabling data-driven decision-making in sales and marketing.</li>
-<li>Implemented machine learning models for demand forecasting, which helped reduce stockouts and overstock scenarios, leading to improved customer satisfaction and operational efficiency.</li>
- <li style="list-style-type: none; font-weight: bold;">3. Executive Dashboards & Business Intelligence</li>
-<li>Designed and deployed interactive executive dashboards in Power BI, providing real-time insights into digital sales, revenue trends, and customer engagement metrics. These dashboards empowered leadership with data-driven visibility into key business performance indicators.</li>
-<li>Enhanced sales reporting processes by automating data extraction, transformation, and visualization, leading to a 10% increase in sales by identifying high-performing products and optimizing sales strategies.</li>
-<li>Built custom reports and KPI tracking tools, allowing stakeholders to monitor customer acquisition costs, sales conversion rates, and retention metrics, ensuring continuous improvement in sales performance.</li>
-          </div>
-        </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h4>Languages &amp; Dev Tools</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">Python</span>
+        <span class="tag hl">R</span>
+        <span class="tag hl">SQL</span>
+        <span class="tag">PL/SQL</span>
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Agile / JIRA</span>
+        <span class="tag">SAP</span>
       </div>
+    </div>
 
-      <!-- Ethereal -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFive">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-            Data Science Analyst - Ethereal Corporate Network Pvt Ltd, MH-India | June 2018 - August 2019
-          </button>
-        </h2>
-        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion">
-          <div class="accordion-body">
-           <li style="list-style-type: none; font-weight: bold;">1. Data Preparation & Analytics Foundation</li>
-<li>Cleaned, processed, and transformed complex datasets from multiple sources using MySQL, Tableau, and Excel, establishing a reliable data foundation for business analytics and reporting.</li>
-<li>Implemented data preprocessing techniques such as missing value imputation, outlier detection, and data normalization to improve data accuracy and integrity for downstream analysis.</li>
-<li style="list-style-type: none; font-weight: bold;">2. Exploratory Data Analysis (EDA) & Statistical Insights</li>
-<li>Conducted exploratory data analysis (EDA) using statistical techniques to identify patterns, correlations, and trends within diverse datasets.</li>
-<li>Applied hypothesis testing, regression analysis, and statistical modeling to uncover key factors influencing business performance, leading to a 15% increase in profit by optimizing resource allocation and strategic decision-making.</li>
-<li style="list-style-type: none; font-weight: bold;">3. Data Visualization & Dashboard Development</li>
-<li>Designed interactive analytical reports and dashboards using Tableau, allowing stakeholders to monitor key performance indicators (KPIs) and track business trends in real time.</li>
-<li>Developed custom data visualizations, integrating large and diverse datasets to provide insights into market dynamics, sales performance, and operational efficiencies.</li>
-<li>Optimized dashboard performance by leveraging data aggregation techniques and indexing, ensuring seamless user interaction and faster query execution.</li>
-<li style="list-style-type: none; font-weight: bold;">4. Machine Learning Model Development & Deployment</li>
-<li>Collaborated with cross-functional teams to train supervised learning models, including Random Forest, Support Vector Machines (SVM), and Naïve Bayes, to predict business trends and customer behaviors.</li>
-<li>Utilized Python libraries (NumPy, Pandas, Seaborn, and Scikit-learn) to preprocess data, tune hyperparameters, and evaluate model performance, achieving 70% accuracy in predictive analysis.</li>
-<li>Conducted feature engineering and selection to improve model efficiency, reducing dimensionality while maintaining high predictive power.</li>
-          </div>
-        </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">☁️</div>
+      <h4>Cloud &amp; Data Eng</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">BigQuery (GCP)</span>
+        <span class="tag hl">AWS</span>
+        <span class="tag hl">Azure</span>
+        <span class="tag">ETL Pipelines</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Spark</span>
+        <span class="tag">Data Fusion</span>
+        <span class="tag">Alteryx</span>
       </div>
+    </div>
 
+    <div class="skill-card">
+      <div class="skill-card-icon">📈</div>
+      <h4>BI &amp; Visualisation</h4>
+      <div class="tag-wrap">
+        <span class="tag hl">Tableau</span>
+        <span class="tag hl">Power BI</span>
+        <span class="tag hl">Looker</span>
+        <span class="tag">Qlik Sense</span>
+        <span class="tag">Grafana</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Salesforce</span>
+        <span class="tag">Google Analytics</span>
+      </div>
     </div>
   </div>
 </section>
-<!-- End Experience Section -->
-    
-    <!-- ======= Projects Section ======= -->
-    <section id="projects" class="projects section-bg">
-      <div class="container">
-        
-        <div class="section-title">
-          <h2>Projects</h2>
-          <p>This section displays my projects during the coursework as a Master's student and some projects that have been done out of my interest using the publicly available datasets.</p>
-        </div>
 
-	<div class="col-12 text-center">
-	    
-            <a href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" class = "text-center" target="_blank"><i class="bi bi-file-pdf" style="padding-right:5px"></i>View My Tableau Profile</a></div>
-            <p>
+<hr class="full-divider">
 
-          </div>
-        
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            
-          </div>
-        </div>
+<!-- ══════════════════════ EXPERIENCE ══════════════════════ -->
+<section class="section" id="experience">
+  <div class="section-label">02 · Experience</div>
+  <h2 class="section-heading">Work <em>history</em></h2>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100" >
-            
-              <div class="portfolio-wrap">
-                <div class="row">
-                <div class="col-md-6 col-lg-6 portfolio-item">
-                <a href="https://github.com/sonalbhor95/Heart-Disease-Predictions" class="link-dark" target="_blank"><h5><u>Heart Disease Prediction using ML models</u></h5></a>
-                    <p> A predictive framework for heart disease risk analysis was developed using a Random Forest Classifier, achieving a cross-validation accuracy of 92.91%. The analysis highlighted that individuals aged 50 and older are at peak risk, with males having max chest pain patterns. Key numerical attributes contributing to the model include resting blood pressure (95–170 mmHg), cholesterol levels (160–340 mg/dL), and maximum heart rate (70–180 bpm). </p>
+  <div class="exp-list">
 
-
-                    <p><b>Tools: </b>Python, Scikit-Learn, Pandas, Matplotlib, Seaborn, Machine Learning Models</p>
-                      <div class="text-center">
-                        <a href="https://github.com/sonalbhor95/Heart-Disease-Predictions" target="_blank"><span class="bi bi-github" style="padding-right:5px"></span>Code</a>
-        
-                      </div> 
-                    </div>
-                
-                      <div class="col-md-6 col-lg-6 portfolio-item">
-                        <a href="https://github.com/sonalbhor95/Sentiment-Analysis-of-IMDB-Movie-Reviews" class="link-dark" target="_blank"><h5><u> Sentiment Analysis of IMDB Movie Reviews </u></h5></a>
-                          <p> A sentimental analysis of IMDB movie reviews is developed using a dataset of 50,000 labeled samples for natural language processing and text analytics. The models leverage Logistic Regression and Multinomial Naive Bayes, both achieving an impressive accuracy of 89%, outperforming Linear Support Vector Machines. Key insights include the effectiveness of simple yet robust algorithms in handling highly polar text data, providing reliable sentiment predictions. </p>
-                          <p><b> Tools: </b> Python, Scikit-Learn, Natural Language Toolkit (NLTK), Pandas, Seaborn, Text Preprocessing, Stemming</p>
-                            <div class="text-center">
-                              <a href="https://github.com/sonalbhor95/Sentiment-Analysis-of-IMDB-Movie-Reviews" class="text-center" target="_blank"><span class="bi bi-github" style="padding-right:5px"></span>Code</a>
-                             
-                            </div>
-                      </div>
-                    </div>
-<div class="row">
-                      <div class="col-md-6 col-lg-6 portfolio-item" >
-                        <a href="https://github.com/sonalbhor95/Credit-Card-Fraud-Detection" class="link-dark" target="_blank"><h5><u> Credit Card Fraud Detection using SMOTE and ADASYN </u></h5></a>
-                          <p>A predictive framework was developed to detect fraudulent credit card transactions in a highly imbalanced dataset, where fraud cases account for only 0.172% of all transactions. The model leverages a Random Forest Classifier combined with oversampling techniques, achieving the highest F1 score of 86.47% on the test set. Key insights include the importance of focusing on precision and recall metrics to mitigate risks associated with false negatives (undetected fraud) and false positives (genuine transactions flagged as fraudulent).
-
-This framework emphasizes the need for robust strategies to handle imbalanced datasets and ensure effective fraud detection while minimizing customer dissatisfaction.</p>
-                          <p><b>Tools: </b>Python, Scikit-Learn, Pandas, Matplotlib, Seaborn, Random Forest, Oversampling Techniques, SMOTE, ADASYN</p>
-                            <div class="text-center">
-                              <div class="portfolio-links">
-                                <a href="https://github.com/sonalbhor95/Credit-Card-Fraud-Detection" target="_blank"><span class="bi bi-github" style="padding-right:5px"></span>Code</a>
-                                
-                              </div>
-                            </div>
-
-                      </div>
-                       <div class="col-md-6 col-lg-6 portfolio-item">
-                        <a href="https://github.com/sonalbhor95/Insurance-Cost-Prediction-Using-Linear-Regression" class="link-dark" target="_blank"><h5><u>Medical Cost Prediction Using Linear Regression</u></h5></a>
-                          <p> Developed a predictive model to estimate individual medical costs based on personal and lifestyle factors such as age, BMI, smoking habits, and region. Conducted detailed EDA to visualize trends and correlations, such as the significant impact of smoking and BMI on medical costs.
-			  Built and trained a linear regression model that achieved an R² score of 0.78, demonstrating the ability to predict medical expenses accurately.Used Seaborn and Matplotlib to create interactive visualizations, highlighting relationships like age vs. charges and smoker status vs. charges.
-			 Insights: Smoking and obesity were identified as primary contributors to increased healthcare costs. Younger individuals with lower BMI generally incurred fewer charges.
-</p>
-                          <p><b>Tools: </b> Python, Scikit-Learn, Pandas, Matplotlib, Seaborn, Linear Regression</p>
-                            <div class="text-center">
-                              <div class="portfolio-links">
-                                <a href="https://github.com/sonalbhor95/Insurance-Cost-Prediction-Using-Linear-Regression" data-gallery="portfolioGallery" target="_blank"><i class="bi bi-github" style="padding-right:5px"></i>Code</a>
-                               
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                     
-                      
-
-                       
-              </div>
-            
-          </div>
-        </div>
-    </section><!-- End Projects Section -->
-
-    <!-- ======= Education Section ======= -->
-    <section id="education" class="education">
-      <div class="container">
-        
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-        <div class="section-title">
-          <h2>Education</h2>     
-          <div data-aos="fade-up">
-            <h4 class="title"><b>University of Michigan Dearborn, Michigan, USA</b></h4>
-	    <p class="description"><em><b>Masters in Data Science GPA: 3.5</b> </em></p>
-            <p class = "description"> Relevant Coursework:
-                     <ul>
-                        <li>Time Series Analysis</li>
-                        <li>Data Mining with Business Applications</li>
-                        <li>Applied Regression Analysis</li>
-			<li>Data Science and Big Data Analytics</li>
-                        <li>Computational Methods in Cognitive Science </li>
-                        <li>Applied Statistical Methods</li>
-                        <li>Statistical Machine Learning</li>
-                        <li>Forecasting</li>
-                      </ul>
-            
-              </p>
-         </div>
-         <div data-aos="fade-up">
-            <h4 class="title"><b>Savitribai Phule Pune University, Pune, India</b></h4>
-            <p class="description"><em><b>Masters of Science (Computer Science) GPA: 3.8</b></em></p>
-            <p class="description"> Relevant Coursework:
-                <ul>
-                  <li>Statistics and Machine Learning</li>
-                  <li>Database</li>
-                  <li>Python Programming</li>
-		  <li>Programming in Java</li>
-		  <li>Data Structures and Algorithms</li>
-                </ul>
-            </p>
-            </p>
-          </p>
-        </div>
-
-        <div data-aos="fade-up">
-            <h4 class="title"><b>Savitribai Phule Pune University, Pune, India</b></h4>
-            <p class="description"><em><b>Bachelor's of Science (Computer Science) - GPA: 3.5 </b></em></p>
-            <p class="description"> Relevant Coursework:
-                     <ul>
-                        <li>Database Management Systems</li>
-                        <li>C, C++ Programming</li>
-                        <li>Programming in PHP</li>
-                        <li>Probability and Statistics</li>
-                      </ul>
-            </p>
-          </p> 
-        </div>
-          </div>                   
-      </div> 
+    <!-- Nikola -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">Jun 2024 — Dec 2024</div>
+        <div class="exp-company-badge">Nikola Motor</div>
       </div>
-    
-    
-    </section><!-- End Education Section -->
-     <!-- ======= Certification Section ======= -->
-    <section id="skills" class="skills section-bg">
-        <div class="container">
-          <div data-aos="fade-up">
-          <div class="section-title">
-            <h2>Certification</h2>
-         
-  
-          <div class="row" data-aos="fade-up" data-aos-delay="100">
-  
-            <div class="col-lg-12 d-flex align-items-stretch">
-              
-              <div class="info">
-                <div class="row">
-                  <div class="col-lg-4 col-md-4">
-                  <div class="Languages">
-                    <ul>
-			<li>IBM Generative AI for Business Intelligence (BI) Analyst.</li>
-			<li>Google Cloud - Generative AI for Healthcare.</li>
-                        <li>Google Big Query</li>
-                        <li>Google Data Analytics Professional</li>
-                        <li>Google Analytics Individual Qualification</li>
-                        <li>Tableau Data Scientist Badges.</li>
-                        <li>DOMO Badges</li>
-                       
-                    </ul>
-                  </div>
-                  </div>
-		 </div>
-            </div>
-          </div>  
-          </div>
-          </div>
-        </div>
-        </div>
-      </section>
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div data-aos="fade-up">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Feel free to reach out to me on the details mentioned below </p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-12 d-flex align-items-stretch">
-            
-            <div class="info">
-              <div class="row">
-                <div class="col-lg-6">
-                <div class="LinkedIn">
-                  <a href="https://www.linkedin.com/in/sonalbhor/" target="_blank"><i class="bi bi-linkedin"></i></a>
-                  <h4>LinkedIn: </h4>
-                  <a href="https://www.linkedin.com/in/sonalbhor/" target="_blank"><p> https://www.linkedin.com/in/sonalbhor/</p></a>
-                </div>
-                </div>
-                <div class="col-lg-6">
-                <div class="email">
-                  <a href="mailto:sonalbhor95@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
-                  <h4>Email: </h4>
-                  <a href="mailto:sonalbhor95@gmail.com" target="_blank"><p>sonalbhor95@gmail.com</p></a>
-                </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                <div class="phone">
-                  <i class="bi bi-phone"></i>
-                  <h4>Call:</h4>
-                  <p>+1 313 398 3912</p>
-                </div>
-                </div>
-                <div class="col-lg-6">
-                <div class="address">
-                  <i class="bi bi-geo-alt"></i>
-                  <h4>Location:</h4>
-                  <p>Arizona, USA</p>
-                </div>
-                </div>  
-              </div>
-          </div>
-        </div>  
-        </div>
-        </div>
-      </div>
-    </section><!-- End Contact Section -->
-
-       
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright 2022 All rights reserved
-        <div class="credits">
-        
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div class="exp-right">
+        <div class="exp-role">Senior Data Analytics Engineer</div>
+        <div class="exp-location">Phoenix, AZ — Automotive / ADAS</div>
+        <ul class="exp-bullets">
+          <li><b>Computer Vision (YOLO v8):</b> Implemented YOLO v8 to extract KPIs from sensor camera images, processing 200TB+ of visual data to detect road conditions, lane markings, and obstacles for ADAS decision-making.</li>
+          <li><b>Real-Time Fleet Monitoring:</b> Integrated AWS S3 time-series data into Grafana dashboards, boosting vehicle health visibility by 25% for engineers and drivers.</li>
+          <li><b>Automated Sensor Pipeline:</b> Reduced sensor data processing time from 5 days → 24 hours via Python automation for extraction, labelling, and SSD transfer.</li>
+          <li><b>ML for ADAS Perception:</b> Developed Segmentation and Florence models processing 200TB of multi-sensor data (Camera, SRR, LRR, MRR, LiDAR) to enhance situational awareness.</li>
+        </ul>
       </div>
     </div>
+
+    <!-- Ford -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">Apr 2023 — Jun 2024</div>
+        <div class="exp-company-badge">Ford Motor</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Engineer (BI)</div>
+        <div class="exp-location">Michigan, USA — Automotive</div>
+        <ul class="exp-bullets">
+          <li><b>Cloud Migration:</b> Translated Alteryx workflows into BigQuery SQL and Google Data Fusion pipelines, reducing dependency on legacy tools and improving query speed.</li>
+          <li><b>ETL Optimisation:</b> Enhanced data validation logic reducing on-call workload by 60% and minimising manual interventions.</li>
+          <li><b>Tableau + Salesforce Dashboards:</b> Built integrated dashboards combining BigQuery and SAP data for real-time sales pipeline and revenue visibility.</li>
+          <li><b>Privacy Compliance:</b> Designed European data governance protocols, cutting data errors by 25% and ensuring regulatory compliance.</li>
+          <li><b>Process Automation:</b> Automated Scrum documentation via Microsoft Macros, reducing manual effort by 80%.</li>
+        </ul>
+      </div>
     </div>
-  </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Bed Bath & Beyond -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">Sep 2021 — Apr 2023</div>
+        <div class="exp-company-badge">Bed Bath &amp; Beyond</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analytics Engineer</div>
+        <div class="exp-location">New Jersey, USA — Retail / eCommerce</div>
+        <ul class="exp-bullets">
+          <li><b>Multi-Touch Attribution (MTA):</b> Built MTA models across email, social, paid, and organic channels — driving a 30% uplift in email performance and 20% improvement in social ROI.</li>
+          <li><b>Marketing Mix Model:</b> Designed MMM framework evaluating TV, print, paid, and organic contribution to sales, enabling smarter budget reallocation.</li>
+          <li><b>A/B Testing:</b> Partnered with channel leads to optimise CTR, email engagement, and ad performance, improving team productivity by 20%.</li>
+          <li><b>Data Quality Automation:</b> SQL-based aggregation and PIVOT automation reduced audit man-hours by 94%.</li>
+          <li><b>Sales Forecasting:</b> Enhanced forecast accuracy by 25% using predictive models built on historical transaction data.</li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Neogen -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">May 2021 — Sep 2021</div>
+        <div class="exp-company-badge">Neogen Corp</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analyst</div>
+        <div class="exp-location">Michigan, USA — Life Sciences</div>
+        <ul class="exp-bullets">
+          <li><b>Predictive Modelling:</b> Built demand forecasting models contributing to a 20% revenue increase by improving inventory management and reducing stockouts.</li>
+          <li><b>Executive Dashboards:</b> Deployed Power BI dashboards providing real-time insight into digital sales, revenue trends, and customer engagement — increasing sales 10%.</li>
+          <li><b>Customer Segmentation:</b> Google Analytics-driven segmentation by demographics, geography, and behaviour to guide targeted marketing campaigns.</li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- Ethereal -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">Jun 2018 — Aug 2019</div>
+        <div class="exp-company-badge">Ethereal Corp</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Science Analyst</div>
+        <div class="exp-location">Maharashtra, India</div>
+        <ul class="exp-bullets">
+          <li><b>ML Model Development:</b> Trained Random Forest, SVM, and Naïve Bayes models achieving 70% predictive accuracy, using Scikit-learn, NumPy, Pandas.</li>
+          <li><b>EDA &amp; Statistical Modelling:</b> Applied hypothesis testing, regression analysis, and feature engineering to uncover patterns leading to a 15% profit increase.</li>
+          <li><b>Tableau Dashboards:</b> Designed real-time KPI dashboards for market dynamics, sales performance, and operational efficiencies.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- ══════════════════════ PROJECTS ══════════════════════ -->
+<section class="section" id="projects">
+  <div class="section-label">03 · Projects</div>
+  <h2 class="section-heading">Selected <em>projects</em></h2>
+  <p style="color:var(--muted); font-size:14px; margin-bottom:2rem;">Academic, personal, and open-source work. View all on <a href="https://github.com/sonalbhor95" target="_blank" style="color:var(--accent);">GitHub</a> and <a href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" style="color:var(--accent2);">Tableau Public</a>.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-num">01 · Classification</div>
+      <div class="project-title">Heart Disease Prediction</div>
+      <p class="project-desc">Predictive framework for heart disease risk using Random Forest Classifier. Identified that individuals 50+ are at peak risk; key features include resting BP, cholesterol, and max heart rate.</p>
+      <div class="project-tools">
+        <span class="tag hl">Python</span>
+        <span class="tag">Scikit-Learn</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Seaborn</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">92.91% CV accuracy</span>
+        <a class="project-link" href="https://github.com/sonalbhor95/Heart-Disease-Predictions" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">02 · NLP</div>
+      <div class="project-title">IMDB Sentiment Analysis</div>
+      <p class="project-desc">NLP pipeline on 50,000 labelled IMDB reviews. Logistic Regression and Multinomial Naive Bayes outperformed Linear SVM with 89% accuracy on highly polar text data.</p>
+      <div class="project-tools">
+        <span class="tag hl">Python</span>
+        <span class="tag">NLTK</span>
+        <span class="tag">Scikit-Learn</span>
+        <span class="tag">Text Preprocessing</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">89% accuracy</span>
+        <a class="project-link" href="https://github.com/sonalbhor95/Sentiment-Analysis-of-IMDB-Movie-Reviews" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03 · Fraud Detection</div>
+      <div class="project-title">Credit Card Fraud Detection</div>
+      <p class="project-desc">Tackled a severely imbalanced dataset (0.172% fraud rate) using Random Forest + SMOTE/ADASYN oversampling. Focused on precision/recall balance to minimise false negatives and false positives.</p>
+      <div class="project-tools">
+        <span class="tag hl">Python</span>
+        <span class="tag">SMOTE</span>
+        <span class="tag">ADASYN</span>
+        <span class="tag">Random Forest</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">F1: 86.47%</span>
+        <a class="project-link" href="https://github.com/sonalbhor95/Credit-Card-Fraud-Detection" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">04 · Regression</div>
+      <div class="project-title">Medical Cost Prediction</div>
+      <p class="project-desc">Linear regression model estimating individual medical insurance costs from age, BMI, smoking habits, and region. Identified smoking and obesity as primary cost drivers through detailed EDA.</p>
+      <div class="project-tools">
+        <span class="tag hl">Python</span>
+        <span class="tag">Linear Regression</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Matplotlib</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">R² = 0.78</span>
+        <a class="project-link" href="https://github.com/sonalbhor95/Insurance-Cost-Prediction-Using-Linear-Regression" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- ══════════════════════ EDUCATION ══════════════════════ -->
+<section class="section" id="education">
+  <div class="section-label">04 · Education</div>
+  <h2 class="section-heading">Academic <em>background</em></h2>
+
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">Masters · Data Science</div>
+      <div class="edu-school">University of Michigan – Dearborn</div>
+      <div class="edu-gpa">GPA: 3.5 · Michigan, USA</div>
+      <ul class="edu-courses">
+        <li>Statistical Machine Learning</li>
+        <li>Time Series Analysis</li>
+        <li>Data Mining with Business Applications</li>
+        <li>Applied Regression Analysis</li>
+        <li>Data Science &amp; Big Data Analytics</li>
+        <li>Forecasting</li>
+        <li>Applied Statistical Methods</li>
+      </ul>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-degree">Masters · Computer Science</div>
+      <div class="edu-school">Savitribai Phule Pune University</div>
+      <div class="edu-gpa">GPA: 3.8 · Pune, India</div>
+      <ul class="edu-courses">
+        <li>Statistics and Machine Learning</li>
+        <li>Database Systems</li>
+        <li>Python Programming</li>
+        <li>Data Structures and Algorithms</li>
+      </ul>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-degree">Bachelors · Computer Science</div>
+      <div class="edu-school">Savitribai Phule Pune University</div>
+      <div class="edu-gpa">GPA: 3.5 · Pune, India</div>
+      <ul class="edu-courses">
+        <li>Database Management Systems</li>
+        <li>Probability and Statistics</li>
+        <li>C / C++ Programming</li>
+        <li>Programming in PHP</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div style="margin-top:4rem;">
+    <div class="section-label" style="margin-bottom:1.5rem;">Certifications</div>
+    <div class="cert-grid reveal">
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">IBM Generative AI for BI Analyst</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">Google Cloud — Generative AI for Healthcare</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">Google Data Analytics Professional</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">Google BigQuery</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">Google Analytics Individual Qualification</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">Tableau Data Scientist Badges</span>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <span class="cert-name">DOMO Badges</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<div id="contact-wrap">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-headline">Let's build something<br><em>meaningful</em> together</h2>
+      <p class="contact-sub">Open to Data Scientist, ML Engineer, and Senior Data Analytics roles. Available immediately in Phoenix, AZ and open to remote opportunities.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:sonalbhor95@gmail.com">
+          <span>sonalbhor95@gmail.com</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/sonalbhor/" target="_blank" rel="noopener">
+          <span>LinkedIn</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a class="contact-link" href="https://github.com/sonalbhor95" target="_blank" rel="noopener">
+          <span>GitHub</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a class="contact-link" href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" rel="noopener">
+          <span>Tableau Public</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a class="contact-link" href="tel:+13133983912">
+          <span>+1 (313) 398-3912</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="cf-name">Your name</label>
+        <input type="text" id="cf-name" placeholder="Jane Smith" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" placeholder="jane@company.com" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" placeholder="Data Scientist role at Acme Inc.">
+      </div>
+      <div class="form-group">
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" rows="4" placeholder="Tell me about the opportunity or project..." required></textarea>
+      </div>
+      <button type="submit" class="btn-send" id="sendBtn">Send message →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  © 2026 Sonal Bhor · Data Scientist &amp; ML Engineer · Phoenix, AZ ·
+  <a href="https://github.com/sonalbhor95" target="_blank">GitHub</a> ·
+  <a href="https://www.linkedin.com/in/sonalbhor/" target="_blank">LinkedIn</a>
+</footer>
+
+<!-- Back to top -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</div>
+
+<!-- ══════════════════════ JS ══════════════════════ -->
+<script>
+  /* ── Mobile nav ── */
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') navMobile.classList.toggle('open'); });
+  function closeMobile() { navMobile.classList.remove('open'); }
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── Back to top ── */
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  /* ── Active nav highlight ── */
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+
+  /* ── Form submit ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('sendBtn');
+    const name = document.getElementById('cf-name').value;
+    const email = document.getElementById('cf-email').value;
+    const subject = document.getElementById('cf-subject').value;
+    const msg = document.getElementById('cf-msg').value;
+    const mailto = `mailto:sonalbhor95@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio enquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+    window.location.href = mailto;
+    btn.textContent = 'Opening email client ✓';
+    btn.style.background = 'var(--accent2)';
+    setTimeout(() => { btn.textContent = 'Send message →'; btn.style.background = ''; }, 3000);
+  }
+</script>
 
 </body>
-
 </html>
