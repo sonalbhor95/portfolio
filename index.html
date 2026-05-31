@@ -99,7 +99,7 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
 
-    /* ─── HERO ──────────────────────────────────────────────────── */
+/* ─── HERO ──────────────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
       display: flex; align-items: center;
@@ -112,29 +112,32 @@
     /* Photo */
     .hero-photo-wrap {
       margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 1.25rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
     }
     .hero-photo {
-      width: 72px; height: 72px;
+      width: 140px; height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(110,231,183,0.4);
+      object-position: center top;
+      border: 3px solid rgba(110,231,183,0.45);
+      box-shadow: 0 0 0 6px rgba(110,231,183,0.08);
       display: block;
     }
     .hero-photo-fallback {
-      width: 72px; height: 72px;
+      width: 140px; height: 140px;
       border-radius: 50%;
       background: linear-gradient(135deg, #1a3a2a 0%, #0b2a20 100%);
-      border: 2px solid rgba(110,231,183,0.4);
+      border: 3px solid rgba(110,231,183,0.45);
+      box-shadow: 0 0 0 6px rgba(110,231,183,0.08);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--mono);
-      font-size: 22px;
+      font-size: 36px;
       font-weight: 500;
       color: var(--accent);
       flex-shrink: 0;
     }
-    .hero-photo-meta { display: flex; flex-direction: column; gap: 2px; }
-    .hero-photo-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .hero-photo-meta { display: flex; flex-direction: column; gap: 4px; }
+    .hero-photo-name { font-size: 16px; font-weight: 700; color: var(--text); }
     .hero-photo-loc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -552,58 +555,6 @@
       line-height: 1.4;
     }
 
-    /* ─── CONTACT ───────────────────────────────────────────────── */
-    #contact-wrap {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-    }
-    .contact-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 6rem 3rem;
-    }
-    .contact-headline {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    .contact-headline em { color: var(--accent); font-style: italic; }
-    .contact-sub {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 3rem;
-      max-width: 600px;
-    }
-    .contact-links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .contact-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.4rem 1.75rem;
-      background: var(--bg2);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      transition: background 0.2s, color 0.2s;
-    }
-    .contact-link:hover { background: var(--bg3); color: var(--accent); }
-    .contact-link-label {
-      display: flex; align-items: center; gap: 0.75rem;
-      color: inherit;
-    }
-    .contact-link-label svg { flex-shrink: 0; opacity: 0.6; }
-    .contact-link:hover .contact-link-label svg { opacity: 1; }
-    .contact-link-arrow { color: var(--muted); font-size: 18px; transition: transform 0.2s, color 0.2s; }
-    .contact-link:hover .contact-link-arrow { transform: translate(3px,-3px); color: var(--accent); }
-
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
       background: var(--bg);
@@ -735,15 +686,15 @@
         <span class="hero-photo-loc">📍 Phoenix, AZ · Open to work</span>
       </div>
     </div>
-    <div class="hero-badge">Open to DS &amp; ML roles · Phoenix, AZ</div>
+    <div class="hero-badge">Open to Data Scientist &amp; ML roles · United States</div>
     <h1 class="hero-name">Sonal<br><span>Bhor</span></h1>
-    <p class="hero-role">Data Scientist · ML Engineer · BI Specialist</p>
+    <p class="hero-role">Data Scientist · ML Engineer · Data Analytics </p>
     <p class="hero-desc">
       6+ years turning complex, high-volume data into decisions that matter — across automotive, retail, healthcare, and finance. Specialising in predictive modelling, NLP, computer vision, and scalable ML pipelines.
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects →</a>
-      <a href="mailto:sonalbhor95@gmail.com" class="btn-secondary">Get in Touch</a>
+      
     </div>
   </div>
 
@@ -898,6 +849,25 @@
   <h2 class="section-heading">Work <em>history</em></h2>
 
   <div class="exp-list">
+  
+	<!-- Array Technologies -->
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-date">August 2025 — Present</div>
+        <div class="exp-company-badge">Array Technologies</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analytics</div>
+        <div class="exp-location">Arizona, USA</div>
+        <ul class="exp-bullets">
+		  <li><b>Tracker Performance Analytics:</b> Designed availability and positional accuracy analytics using SQL and Python to evaluate operational performance and energy impact across solar tracker systems.</li>
+		  <li><b>Automated Monitoring & Dashboards:</b> Built Power BI dashboards and automated alerting workflows to track uptime, critical alerts, tracker trends, and operational performance metrics in real time.</li>
+		  <li><b>Multi-Source Data Integration:</b> Integrated and analyzed data from SAP, Salesforce, MySQL, Azure, and production databases to support warranty analytics, reporting accuracy, and operational insights.</li>
+		  <li><b>Data Standardization:</b> Initiated cleanup and standardization efforts across SAP and Salesforce systems to improve data consistency, reporting reliability, and long-term analytical scalability.</li>
+		  <li><b>Hailstorm Event Analysis:</b> Developed event analysis workflows and dashboards summarizing tracker alerts, event duration, wind speed, and DC exposure — improving visibility into system behavior during extreme weather conditions.</li>
+		</ul>
+      </div>
+    </div>
 
     <!-- Nikola -->
     <div class="exp-item reveal">
@@ -907,7 +877,7 @@
       </div>
       <div class="exp-right">
         <div class="exp-role">Senior Data Analytics Engineer</div>
-        <div class="exp-location">Phoenix, AZ — Automotive / ADAS</div>
+        <div class="exp-location">Arizona, USA</div>
         <ul class="exp-bullets">
           <li><b>Computer Vision (YOLO v8):</b> Implemented YOLO v8 to extract KPIs from sensor camera images, processing 200TB+ of visual data to detect road conditions, lane markings, and obstacles for ADAS decision-making.</li>
           <li><b>Real-Time Fleet Monitoring:</b> Integrated AWS S3 time-series data into Grafana dashboards, boosting vehicle health visibility by 25% for engineers and drivers.</li>
@@ -925,7 +895,7 @@
       </div>
       <div class="exp-right">
         <div class="exp-role">Data Engineer (BI)</div>
-        <div class="exp-location">Michigan, USA — Automotive</div>
+        <div class="exp-location">Michigan, USA</div>
         <ul class="exp-bullets">
           <li><b>Cloud Migration:</b> Translated Alteryx workflows into BigQuery SQL and Google Data Fusion pipelines, reducing dependency on legacy tools and improving query speed.</li>
           <li><b>ETL Optimisation:</b> Enhanced data validation logic reducing on-call workload by 60% and minimising manual interventions.</li>
@@ -943,8 +913,8 @@
         <div class="exp-company-badge">Bed Bath &amp; Beyond</div>
       </div>
       <div class="exp-right">
-        <div class="exp-role">Data Analytics Engineer</div>
-        <div class="exp-location">New Jersey, USA — Retail / eCommerce</div>
+        <div class="exp-role">Analytics, Digital Marketing</div>
+        <div class="exp-location">New Jersey, USA</div>
         <ul class="exp-bullets">
           <li><b>Multi-Touch Attribution (MTA):</b> Built MTA models across email, social, paid, and organic channels — driving a 30% uplift in email performance and 20% improvement in social ROI.</li>
           <li><b>Marketing Mix Model:</b> Designed MMM framework evaluating TV, print, paid, and organic contribution to sales, enabling smarter budget reallocation.</li>
@@ -963,7 +933,7 @@
       </div>
       <div class="exp-right">
         <div class="exp-role">Data Analyst</div>
-        <div class="exp-location">Michigan, USA — Life Sciences</div>
+        <div class="exp-location">Michigan, USA</div>
         <ul class="exp-bullets">
           <li><b>Predictive Modelling:</b> Built demand forecasting models contributing to a 20% revenue increase by improving inventory management and reducing stockouts.</li>
           <li><b>Executive Dashboards:</b> Deployed Power BI dashboards providing real-time insight into digital sales, revenue trends, and customer engagement — increasing sales 10%.</li>
@@ -972,22 +942,6 @@
       </div>
     </div>
 
-    <!-- Ethereal -->
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-date">Jun 2018 — Aug 2019</div>
-        <div class="exp-company-badge">Ethereal Corp</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Data Science Analyst</div>
-        <div class="exp-location">Maharashtra, India</div>
-        <ul class="exp-bullets">
-          <li><b>ML Model Development:</b> Trained Random Forest, SVM, and Naïve Bayes models achieving 70% predictive accuracy, using Scikit-learn, NumPy, Pandas.</li>
-          <li><b>EDA &amp; Statistical Modelling:</b> Applied hypothesis testing, regression analysis, and feature engineering to uncover patterns leading to a 15% profit increase.</li>
-          <li><b>Tableau Dashboards:</b> Designed real-time KPI dashboards for market dynamics, sales performance, and operational efficiencies.</li>
-        </ul>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -997,7 +951,7 @@
 <!-- ══════════════════════ PROJECTS ══════════════════════ -->
 <section class="section" id="projects">
   <div class="section-label">03 · Projects</div>
-  <h2 class="section-heading">Selected <em>projects</em></h2>
+  <h2 class="section-heading">Personal <em>projects</em></h2>
   <p style="color:var(--muted); font-size:14px; margin-bottom:2rem;">Academic, personal, and open-source work. View all on <a href="https://github.com/sonalbhor95" target="_blank" style="color:var(--accent);">GitHub</a> and <a href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" style="color:var(--accent2);">Tableau Public</a>.</p>
 
   <div class="projects-grid">
