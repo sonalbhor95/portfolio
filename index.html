@@ -108,6 +108,34 @@
       gap: 4rem;
     }
     .hero-left { flex: 1; }
+
+    /* Photo */
+    .hero-photo-wrap {
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1.25rem;
+    }
+    .hero-photo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(110,231,183,0.4);
+      display: block;
+    }
+    .hero-photo-fallback {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a3a2a 0%, #0b2a20 100%);
+      border: 2px solid rgba(110,231,183,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-photo-meta { display: flex; flex-direction: column; gap: 2px; }
+    .hero-photo-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .hero-photo-loc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--mono);
@@ -532,79 +560,49 @@
     .contact-inner {
       max-width: 1200px; margin: 0 auto;
       padding: 6rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
     }
     .contact-headline {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .contact-headline em { color: var(--accent); font-style: italic; }
     .contact-sub {
       font-size: 15px;
       color: var(--muted);
       line-height: 1.75;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
     }
-    .contact-links { display: flex; flex-direction: column; gap: 1px; }
+    .contact-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
     .contact-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 0;
-      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 1.75rem;
+      background: var(--bg2);
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.04em;
       color: var(--text);
-      transition: color 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
-    .contact-link:hover { color: var(--accent); }
-    .contact-link-arrow { color: var(--muted); font-size: 18px; transition: transform 0.2s; }
+    .contact-link:hover { background: var(--bg3); color: var(--accent); }
+    .contact-link-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: inherit;
+    }
+    .contact-link-label svg { flex-shrink: 0; opacity: 0.6; }
+    .contact-link:hover .contact-link-label svg { opacity: 1; }
+    .contact-link-arrow { color: var(--muted); font-size: 18px; transition: transform 0.2s, color 0.2s; }
     .contact-link:hover .contact-link-arrow { transform: translate(3px,-3px); color: var(--accent); }
-
-    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .form-group label {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .form-group input,
-    .form-group textarea {
-      background: var(--bg3);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 14px;
-      padding: 0.85rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
-    .form-group input:focus,
-    .form-group textarea:focus { border-color: var(--accent); }
-    .btn-send {
-      align-self: flex-start;
-      background: var(--accent);
-      color: var(--bg);
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 14px;
-      border: none;
-      border-radius: 8px;
-      padding: 0.9rem 2.2rem;
-      cursor: pointer;
-      transition: transform 0.15s, opacity 0.2s;
-    }
-    .btn-send:hover { transform: translateY(-2px); opacity: 0.9; }
 
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
@@ -685,7 +683,7 @@
       .hero-right { flex: none; width: 100%; }
       .section { padding: 4rem 1.5rem; }
       .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      .contact-inner { padding: 4rem 1.5rem; }
     }
 
     @media (max-width: 600px) {
@@ -724,6 +722,19 @@
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <div id="hero">
   <div class="hero-left">
+    <div class="hero-photo-wrap">
+      <img
+        src="assets/img/sonal_img.jpg"
+        alt="Sonal Bhor"
+        class="hero-photo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hero-photo-fallback" style="display:none;">SB</div>
+      <div class="hero-photo-meta">
+        <span class="hero-photo-name">Sonal Bhor</span>
+        <span class="hero-photo-loc">📍 Phoenix, AZ · Open to work</span>
+      </div>
+    </div>
     <div class="hero-badge">Open to DS &amp; ML roles · Phoenix, AZ</div>
     <h1 class="hero-name">Sonal<br><span>Bhor</span></h1>
     <p class="hero-role">Data Scientist · ML Engineer · BI Specialist</p>
@@ -1147,52 +1158,45 @@
 <!-- ══════════════════════ CONTACT ══════════════════════ -->
 <div id="contact-wrap">
   <div class="contact-inner">
-    <div>
-      <h2 class="contact-headline">Let's build something<br><em>meaningful</em> together</h2>
-      <p class="contact-sub">Open to Data Scientist, ML Engineer, and Senior Data Analytics roles. Available immediately in Phoenix, AZ and open to remote opportunities.</p>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:sonalbhor95@gmail.com">
-          <span>sonalbhor95@gmail.com</span>
-          <span class="contact-link-arrow">↗</span>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/sonalbhor/" target="_blank" rel="noopener">
-          <span>LinkedIn</span>
-          <span class="contact-link-arrow">↗</span>
-        </a>
-        <a class="contact-link" href="https://github.com/sonalbhor95" target="_blank" rel="noopener">
-          <span>GitHub</span>
-          <span class="contact-link-arrow">↗</span>
-        </a>
-        <a class="contact-link" href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" rel="noopener">
-          <span>Tableau Public</span>
-          <span class="contact-link-arrow">↗</span>
-        </a>
-        <a class="contact-link" href="tel:+13133983912">
-          <span>+1 (313) 398-3912</span>
-          <span class="contact-link-arrow">↗</span>
-        </a>
-      </div>
+    <h2 class="contact-headline">Let's build something<br><em>meaningful</em> together</h2>
+    <p class="contact-sub">Open to Data Scientist, ML Engineer, and Senior Analytics roles. Available immediately in Phoenix, AZ — also open to remote.</p>
+    <div class="contact-links-grid">
+      <a class="contact-link" href="mailto:sonalbhor95@gmail.com">
+        <span class="contact-link-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          sonalbhor95@gmail.com
+        </span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="tel:+13133983912">
+        <span class="contact-link-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +1 (313) 398-3912
+        </span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/sonalbhor/" target="_blank" rel="noopener">
+        <span class="contact-link-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/sonalbhor
+        </span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://github.com/sonalbhor95" target="_blank" rel="noopener">
+        <span class="contact-link-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          github.com/sonalbhor95
+        </span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://public.tableau.com/app/profile/sonal.bhor/vizzes" target="_blank" rel="noopener">
+        <span class="contact-link-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="10.5" y="2" width="3" height="20" rx="1"/><rect x="2" y="10.5" width="20" height="3" rx="1"/><rect x="6.5" y="6.5" width="11" height="2" rx="1"/><rect x="6.5" y="15.5" width="11" height="2" rx="1"/></svg>
+          Tableau Public Profile
+        </span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
     </div>
-
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <label for="cf-name">Your name</label>
-        <input type="text" id="cf-name" placeholder="Jane Smith" required>
-      </div>
-      <div class="form-group">
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" placeholder="jane@company.com" required>
-      </div>
-      <div class="form-group">
-        <label for="cf-subject">Subject</label>
-        <input type="text" id="cf-subject" placeholder="Data Scientist role at Acme Inc.">
-      </div>
-      <div class="form-group">
-        <label for="cf-msg">Message</label>
-        <textarea id="cf-msg" rows="4" placeholder="Tell me about the opportunity or project..." required></textarea>
-      </div>
-      <button type="submit" class="btn-send" id="sendBtn">Send message →</button>
-    </form>
   </div>
 </div>
 
@@ -1247,21 +1251,6 @@
       a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
     });
   });
-
-  /* ── Form submit ── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('sendBtn');
-    const name = document.getElementById('cf-name').value;
-    const email = document.getElementById('cf-email').value;
-    const subject = document.getElementById('cf-subject').value;
-    const msg = document.getElementById('cf-msg').value;
-    const mailto = `mailto:sonalbhor95@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio enquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
-    window.location.href = mailto;
-    btn.textContent = 'Opening email client ✓';
-    btn.style.background = 'var(--accent2)';
-    setTimeout(() => { btn.textContent = 'Send message →'; btn.style.background = ''; }, 3000);
-  }
 </script>
 
 </body>
