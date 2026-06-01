@@ -15,11 +15,11 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Sonal Bhor | Data Scientist &amp; ML Engineer">
   <meta property="og:description" content="Data Scientist with 6+ years building ML systems, pipelines, and analytics across automotive, retail, healthcare, and energy.">
-  <meta property="og:image" content="assets/img/sonal_img.jpg">
+  <meta property="og:image" content="assets/img/sonal_portfolio1.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sonal Bhor | Data Scientist &amp; ML Engineer">
-  <meta name="twitter:image" content="assets/img/sonal_img.jpg">
+  <meta name="twitter:image" content="assets/img/sonal_portfolio1.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -742,13 +742,13 @@
     <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
       <!-- Desktop pill nav -->
       <div class="nav-links-pill">
-        <button class="nav-btn" onclick="scrollTo('top')">Home</button>
-        <button class="nav-btn" onclick="scrollTo('about')">About</button>
-        <button class="nav-btn" onclick="scrollTo('projects')">Projects</button>
-        <button class="nav-btn" onclick="scrollTo('experience')">Experience</button>
-        <button class="nav-btn" onclick="scrollTo('skills')">Skills</button>
-        <button class="nav-btn" onclick="scrollTo('education')">Education</button>
-        <button class="nav-btn" onclick="scrollTo('contact')">Contact</button>
+        <button class="nav-btn" onclick="scrollToSection('top')">Home</button>
+		<button class="nav-btn" onclick="scrollToSection('about')">About</button>
+		<button class="nav-btn" onclick="scrollToSection('projects')">Projects</button>
+		<button class="nav-btn" onclick="scrollToSection('experience')">Experience</button>
+		<button class="nav-btn" onclick="scrollToSection('skills')">Skills</button>
+		<button class="nav-btn" onclick="scrollToSection('education')">Education</button>
+		<button class="nav-btn" onclick="scrollToSection('contact')">Contact</button>
       </div>
       <!-- Mobile icon -->
       <button class="nav-menu-icon" id="menuBtn" aria-label="Open menu" aria-expanded="false">
@@ -821,7 +821,7 @@
       <!-- Right: photo panel -->
       <aside class="hero-aside">
         <div class="hero-photo-frame">
-          <img src="assets/img/sonal_portfolio1.jpg" alt="Sonal Bhor professional headshot"
+          <img src="assets/img/sonal_img.jpg" alt="Sonal Bhor professional headshot"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="photo-fallback">SB</div>
         </div>
@@ -860,7 +860,7 @@
           <p>I build practical machine learning systems and analytics pipelines that work reliably in real-world environments.</p>
           <p>Impact comes from more than model accuracy. Systems need to be scalable, reliable, and directly connected to the decisions they support.</p>
           <p>My work spans predictive modelling, computer vision for ADAS systems, marketing attribution, demand forecasting, and solar tracker analytics — connecting ML with data engineering and BI tools to deliver outputs people act on daily.</p>
-          <p>Most of what I build sits at the intersection of machine learning, data infrastructure, and business context. I am based in Phoenix, AZ, and open to Data Scientist, Data Engineer, ML Engineer, and Analytics roles across the United States.</p>
+          <p>Most of what I build sits at the intersection of machine learning, data infrastructure, and business context. I am based in Phoenix, AZ and open to Data Scientist and ML Engineer roles across the United States.</p>
         </div>
       </div>
     </div>
@@ -1299,12 +1299,27 @@
   function closeDrawer() { drawer.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
 
   /* ── Smooth scroll helper ── */
-  function scrollTo(id) {
-    const el = document.getElementById(id) || document.getElementById('top');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    closeDrawer();
+function scrollToSection(id) {
+
+  if(id === 'top'){
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    return;
   }
 
+  const el = document.getElementById(id);
+
+  if(el){
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  closeDrawer();
+}
   /* ── Scroll reveal ── */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -1317,7 +1332,9 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   /* ── Active nav highlight ── */
-  const sections = document.querySelectorAll('section[id], main[id]');
+const sections = document.querySelectorAll(
+  '#about, #projects, #experience, #skills, #education, #contact'
+);
   const navBtns  = document.querySelectorAll('.nav-btn');
   const idMap = { top:'top', about:'about', projects:'projects', experience:'experience', skills:'skills', education:'education', contact:'contact' };
 
