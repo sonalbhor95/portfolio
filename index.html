@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sonal Bhor | Data Scientist &amp; ML Engineer</title>
    <!-- ADD THIS -->
-  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/png" href="assets/img/icon.png">
   <!-- END -->
   <meta name="description" content="Sonal Bhor is a Data Scientist with 6+ years of experience building machine learning, analytics, and BI systems for production use. Available for Data Scientist and ML Engineer roles in the United States.">
   <meta name="keywords" content="Sonal Bhor,Data Scientist,Machine Learning,NLP,Python,SQL,Tableau,Power BI,Computer Vision,YOLO,ETL,BigQuery,AWS,Azure,Scikit-Learn,XGBoost,Predictive Modeling,hire data scientist,hire ML engineer,data science portfolio">
@@ -15,11 +16,11 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Sonal Bhor | Data Scientist &amp; ML Engineer">
   <meta property="og:description" content="Data Scientist with 6+ years building ML systems, pipelines, and analytics across automotive, retail, healthcare, and energy.">
-  <meta property="og:image" content="assets/img/sonal_img.jpg">
+  <meta property="og:image" content="assets/img/sonal_portfolio1.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sonal Bhor | Data Scientist &amp; ML Engineer">
-  <meta name="twitter:image" content="assets/img/sonal_img.jpg">
+  <meta name="twitter:image" content="assets/img/sonal_portfolio1.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -720,7 +721,15 @@
       }
       .chat-btn span { display: none; }
     }
-
+	/* Fix smooth scrolling with sticky header */
+	#about,
+	#projects,
+	#experience,
+	#skills,
+	#education,
+	#contact {
+	  scroll-margin-top: 90px;
+	}
     /* ─── REVEAL ANIMATION ───────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -821,7 +830,7 @@
       <!-- Right: photo panel -->
       <aside class="hero-aside">
         <div class="hero-photo-frame">
-          <img src="assets/img/sonal_img.jpg" alt="Sonal Bhor professional headshot"
+          <img src="assets/img/sonal_portfolio1.jpg" alt="Sonal Bhor professional headshot"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="photo-fallback">SB</div>
         </div>
@@ -1309,12 +1318,14 @@ function scrollToSection(id) {
     return;
   }
 
-  const el = document.getElementById(id);
+  const section = document.getElementById(id);
 
-  if(el){
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+  if(section){
+    const headerHeight = document.querySelector('header').offsetHeight;
+
+    window.scrollTo({
+      top: section.offsetTop - headerHeight - 10,
+      behavior: 'smooth'
     });
   }
 
