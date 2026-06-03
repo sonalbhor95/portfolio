@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1840,50 +1841,6 @@ function scrollToSection(id) {
     });
   }, { passive: true });
 </script>
-
-<!-- ══ CHAT WIDGET HTML ═══════════════════════════════════════ -->
-<button class="chat-fab" id="chatFab" aria-label="Ask about Sonal" aria-expanded="false">
-  <svg class="chat-fab-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    <line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/>
-  </svg>
-  <svg class="chat-fab-icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-  </svg>
-  <span class="chat-fab-label">Ask about Sonal</span>
-</button>
-
-<div class="chat-panel" id="chatPanel" aria-hidden="true">
-  <div class="chat-panel-header">
-    <div class="chat-panel-header-left">
-      <div class="chat-avatar">SB</div>
-      <div>
-        <div class="chat-panel-name">Ask about Sonal</div>
-        <div class="chat-panel-sub">Powered by AI</div>
-      </div>
-    </div>
-    <button class="chat-close-btn" id="chatClose" aria-label="Close chat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg chat-msg-ai">
-      <p>Hi! I'm Sonal's AI assistant. Ask me anything about her experience, skills, or projects.</p>
-    </div>
-    <div class="chat-suggestions" id="chatSuggestions">
-      <button class="chat-suggestion" onclick="sendSuggestion(this)">What tools does Sonal use?</button>
-      <button class="chat-suggestion" onclick="sendSuggestion(this)">Tell me about her ML experience</button>
-      <button class="chat-suggestion" onclick="sendSuggestion(this)">What roles is she open to?</button>
-      <button class="chat-suggestion" onclick="sendSuggestion(this)">Show me her projects</button>
-    </div>
-  </div>
-  <div class="chat-input-row">
-    <input class="chat-input" id="chatInput" type="text" placeholder="Ask a question..." maxlength="300" autocomplete="off"/>
-    <button class="chat-send-btn" id="chatSend" aria-label="Send">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
-  </div>
-</div>
 
 </body>
 </html>
