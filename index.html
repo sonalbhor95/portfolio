@@ -498,6 +498,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      flex-wrap: wrap;
     }
     .card-link {
       display: inline-flex;
@@ -509,6 +510,124 @@
     }
     .card-link:hover { color: var(--accent); }
     .card-link svg { width: 16px; height: 16px; }
+
+    /* ── Project media placeholder ─────────────────────────── */
+    .card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--panel-strong);
+      border: 1px dashed var(--border-strong);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-media-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .card-media-placeholder svg { width: 22px; height: 22px; opacity: 0.5; }
+
+    /* ── Collapsible case study ────────────────────────────── */
+    .card-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px; font-weight: 500;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+    }
+    .card-toggle:hover { text-decoration: underline; }
+    .card-toggle-icon { transition: transform 0.2s; display: inline-flex; }
+    .card-toggle[aria-expanded="true"] .card-toggle-icon { transform: rotate(180deg); }
+    .card-impact { display: none; }
+    .card-impact.open { display: block; }
+
+    /* ── Live demo link ─────────────────────────────────────── */
+    .card-link-demo { color: var(--accent); }
+
+    /* ── Bullet lead-in label ──────────────────────────────── */
+    .bullet-label { color: var(--foreground); font-weight: 600; }
+
+    /* ── Hero chatbot callout ──────────────────────────────── */
+    .hero-chat-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--panel-strong);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .hero-chat-callout:hover { border-color: var(--border-strong); color: var(--foreground); }
+    .hero-chat-callout svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── Testimonials ───────────────────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      gap: 16px;
+    }
+    @media (min-width: 768px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    .testimonial-card {
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial-quote {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--foreground);
+      font-style: italic;
+    }
+    .testimonial-author { font-size: 13px; color: var(--muted); }
+    .testimonial-author strong { color: var(--foreground); font-weight: 600; }
+
+    /* ── Calendly / schedule button ─────────────────────────── */
+    .btn-schedule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--foreground);
+      color: var(--background);
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+      margin-top: 16px;
+    }
+    .btn-schedule:hover { transform: translateY(-2px); opacity: 0.85; }
+    .btn-schedule svg { width: 16px; height: 16px; }
 
     .exp-cards { display: flex; flex-direction: column; gap: 24px; }
 
@@ -904,6 +1023,11 @@
           <p>I specialize in predictive modeling, NLP, computer vision, and data engineering. My work ends with something real: a dashboard that replaced a manual process, a classifier that caught what rules missed, a pipeline that finally made the data trustworthy.</p>
         </div>
 
+        <button type="button" class="hero-chat-callout" onclick="if (typeof openChat === 'function') openChat();">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Have a question about my experience? Ask my AI assistant.
+        </button>
+
         <div class="hero-actions">
           <!-- <a
             href="YOUR_GOOGLE_DRIVE_RESUME_LINK"
@@ -1010,7 +1134,8 @@
     </div>
   </section>
 
-<!-- ── PROJECTS ──────────────────────────────────────────── -->
+  
+  <!-- ── PROJECTS ──────────────────────────────────────────── -->
 <section class="section" id="projects">
   <div class="section-grid">
     <div class="section-sidebar">
@@ -1028,6 +1153,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+            <div class="card-media">
+              <img alt="Solar Operations Copilot dashboard screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/Solar Operations Copilot.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add dashboard image or demo GIF]
+              </div>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Solar Operations Copilot</h3>
               <p class="card-desc">
@@ -1035,6 +1167,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Built an end-to-end machine learning and analytics platform that combines weather intelligence, solar generation benchmarking, anomaly detection, and AI-powered insights to help solar operators identify underperforming assets and optimize energy production. The platform integrates data from Open-Meteo, NASA POWER, and NREL PVWatts APIs, processes and stores operational data in PostgreSQL, and delivers interactive dashboards through Streamlit. Key capabilities include energy performance benchmarking against expected generation, forecasting future production, automated anomaly detection, and a Retrieval-Augmented Generation copilot that enables users to ask natural language questions about solar operations and performance trends.
             </p>
@@ -1054,6 +1192,11 @@
             </div>
 
             <div class="card-footer">
+             
+			    <a class="card-link card-link-demo" href="assets/img/projects/Solar Operations Copilot.gif" target="_blank" rel="noopener">
+    Watch Demo
+  </a>
+			  
               <a class="card-link" href="https://github.com/sonalbhor95/SolarOperationsCopilot" target="_blank" rel="noopener">
                 View Code
               </a>
@@ -1063,6 +1206,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+            <div class="card-media">
+              <img alt="Multi-Language RAG Assistant screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/multi-language-rag.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add dashboard image or demo GIF]
+              </div>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Multi-Language RAG Assistant</h3>
               <p class="card-desc">
@@ -1070,6 +1220,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Developed an end-to-end RAG system that ingests PDF documents, splits text into optimized chunks, generates multilingual embeddings, and stores them in ChromaDB for semantic retrieval. The application uses LangChain to connect document retrieval with LLM-based response generation, enabling users to ask questions in one language and retrieve relevant context from documents written in another language. A Streamlit interface provides an interactive chat experience with language selection, making the project a practical demonstration of GenAI application engineering, multilingual NLP, vector search, and grounded question answering.
             </p>
@@ -1090,6 +1246,10 @@
             </div>
 
             <div class="card-footer">
+             <a class="card-link card-link-demo" href="assets/img/projects/multi-language-rag-demo.gif" target="_blank" rel="noopener">
+    Watch Demo
+  </a>
+			  
               <a class="card-link" href="https://github.com/sonalbhor95/MultiDocumentRAG" target="_blank" rel="noopener">
                 View Code
               </a>
@@ -1099,6 +1259,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+            <div class="card-media">
+              <img alt="InsureRisk AI dashboard screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/insurerisk-ai.gif"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add dashboard image or demo GIF]
+              </div>
+            </div>
             <div class="card-header">
               <h3 class="card-title">InsureRisk AI</h3>
               <p class="card-desc">
@@ -1106,6 +1273,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Developed a complete insurance machine learning pipeline using French Motor Third-Party Liability claims data from CASdatasets, accessed programmatically through OpenML. The project automates data ingestion, preprocessing, data quality checks, feature engineering, model training, model evaluation, and model packaging into a deployable joblib bundle. The system estimates claim frequency, claim severity, pure premium, expected loss, and risk tier for policy-level underwriting-style decisions. It also includes model-card documentation, evaluation metrics, a Streamlit dashboard, and a FastAPI prediction service, making it a full portfolio-ready ML application rather than a standalone notebook.
             </p>
@@ -1126,6 +1299,9 @@
             </div>
 
             <div class="card-footer">
+              <a class="card-link card-link-demo" href="https://sonalbhor95-insurerisk-ai-appstreamlit-app-rvwqtm.streamlit.app/" target="_blank" rel="noopener">
+                Live Demo
+              </a>
               <a class="card-link" href="https://github.com/sonalbhor95/insurerisk-ai" target="_blank" rel="noopener">
                 View Code
               </a>
@@ -1135,6 +1311,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+            <div class="card-media">
+              <img alt="CampaignLift AI dashboard screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/campaignlift-ai.gif"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add dashboard image or demo GIF]
+              </div>
+            </div>
             <div class="card-header">
               <h3 class="card-title">CampaignLift AI</h3>
               <p class="card-desc">
@@ -1142,6 +1325,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Developed an end-to-end causal ML system using the public Criteo Uplift Prediction Dataset to estimate individual treatment effects for digital marketing campaigns. The project includes data ingestion, treatment/control sampling, data quality checks, uplift modeling, decile-based targeting analysis, advanced causal learners, model monitoring, and a Streamlit dashboard. Core capabilities include S-Learner and T-Learner uplift modeling, custom X-Learner implementation, EconML Causal Forest modeling, uplift prediction, treatment recommendation, targeting policy summaries, and drift monitoring across feature and prediction distributions. The project demonstrates how marketing teams can prioritize persuadable users, reduce wasted ad spend, and improve campaign targeting decisions using causal machine learning.
             </p>
@@ -1162,6 +1351,9 @@
             </div>
 
             <div class="card-footer">
+              <a class="card-link card-link-demo" href="https://campaignlift-ai-fpvmdwjscsbkjg7gg87pch.streamlit.app/" target="_blank" rel="noopener">
+                Live Demo
+              </a>
               <a class="card-link" href="https://github.com/sonalbhor95/campaignlift-ai" target="_blank" rel="noopener">
                 View Code
               </a>
@@ -1176,6 +1368,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+            <!--<div class="card-media">
+              <img alt="Heart Disease Prediction notebook screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/heart-disease-prediction.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add notebook chart or output image]
+              </div>
+            </div>-->
             <div class="card-header">
               <h3 class="card-title">Heart Disease Prediction</h3>
               <p class="card-desc">
@@ -1183,6 +1382,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Identified patients aged 50+ as the highest-risk cohort. The most predictive features were resting blood pressure, cholesterol, and maximum heart rate achieved — each validated through feature importance analysis and cross-validation to ensure results generalize beyond the training set.
             </p>
@@ -1205,6 +1410,13 @@
 
         <article class="card-featured">
           <div class="card-inner">
+           <!-- <div class="card-media">
+              <img alt="IMDB Sentiment Analysis notebook screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/imdb-sentiment-analysis.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add notebook chart or output image]
+              </div>
+            </div> -->
             <div class="card-header">
               <h3 class="card-title">IMDB Sentiment Analysis</h3>
               <p class="card-desc">
@@ -1212,6 +1424,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Logistic Regression and Multinomial Naïve Bayes each hit 89% accuracy, outperforming Linear SVM on this highly polar dataset. The full pipeline covers text cleaning, stemming, stopword removal, and TF-IDF vectorization — designed so any new text can move from raw input to prediction in a single call.
             </p>
@@ -1234,6 +1452,13 @@
 
         <article class="card-secondary">
           <div class="card-inner">
+           <!-- <div class="card-media">
+              <img alt="Credit Card Fraud Detection notebook screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/credit-card-fraud-detection.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add notebook chart or output image]
+              </div> 
+            </div>-->
             <div class="card-header">
               <h3 class="card-title">Credit Card Fraud Detection</h3>
               <p class="card-desc">
@@ -1241,6 +1466,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               Random Forest with resampling achieves an F1-score of 86.47%, striking the right balance between catching real fraud and avoiding unnecessary blocks on legitimate transactions.
             </p>
@@ -1262,6 +1493,13 @@
 
         <article class="card-secondary">
           <div class="card-inner">
+            <!-- <div class="card-media">
+              <img alt="Medical Cost Prediction notebook screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" src="assets/img/projects/medical-cost-prediction.png"/>
+              <div class="card-media-placeholder" style="display:flex;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                [Screenshot placeholder — add notebook chart or output image]
+              </div> 
+            </div>-->
             <div class="card-header">
               <h3 class="card-title">Medical Cost Prediction</h3>
               <p class="card-desc">
@@ -1269,6 +1507,12 @@
               </p>
             </div>
 
+            <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleCaseStudy(this)">
+              Read full case study
+              <span class="card-toggle-icon">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
             <p class="card-impact">
               R² of 0.78. EDA made the story clear before modeling even started: smoking and high BMI together account for the largest portion of elevated costs, with consistent patterns visible across age groups and regions.
             </p>
@@ -1307,7 +1551,7 @@
           <article class="exp-card">
             <div class="exp-card-header">
               <div>
-                <h3 class="exp-role">Data Analyst</h3>
+                <h3 class="exp-role">Data Analyst - Data Science & ML Focus</h3>
                 <p class="exp-company">Array Technologies</p>
               </div>
               <p class="exp-date">08/2025 – Present</p>
@@ -1315,47 +1559,47 @@
 
             <p class="exp-subhead">What I Build</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Analytics workflows that track solar tracker availability, positional accuracy, energy yield impact, and fleet-level performance across sites.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Warranty intelligence studies using operational and service data to surface component failure rates, claim timing patterns, and expected service life after commissioning.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Hailstorm event analysis for solar sites — combining weather alerts, wind speed, event duration, tracker stow behavior, and DC exposure to understand how systems respond under stress.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Power BI dashboards for uptime, critical alerts, performance trends, availability KPIs, and operational decision-making across reliability and service teams.</p></li>
-				 <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Investigate hail alert events across 14 utility-scale solar sites to identify motor non-response patterns, supporting root cause analysis and operational reliability improvements.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Data standardization and cleanup workflows across SAP, Salesforce, MySQL, and production systems to make reporting consistent and trustworthy.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Monitoring and alerting analysis for SkyLink and next-generation tracker systems.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Analytics workflows:</span> track solar tracker availability, positional accuracy, energy yield impact, and fleet-level performance across sites.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Warranty intelligence studies:</span> using operational and service data to surface component failure rates, claim timing patterns, and expected service life after commissioning.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Hailstorm event analysis:</span> for solar sites — combining weather alerts, wind speed, event duration, tracker stow behavior, and DC exposure to understand how systems respond under stress.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Power BI dashboards:</span> for uptime, critical alerts, performance trends, availability KPIs, and operational decision-making across reliability and service teams.</p></li>
+				 <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Hail alert investigation:</span> across 14 utility-scale solar sites to identify motor non-response patterns, supporting root cause analysis and operational reliability improvements.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Data standardization and cleanup workflows:</span> across SAP, Salesforce, MySQL, and production systems to make reporting consistent and trustworthy.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Monitoring and alerting analysis:</span> for SkyLink and next-generation tracker systems.</p></li>
             </ul>
 
             <p class="exp-subhead">Impact</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Reliability, warranty, service, and engineering teams now have cleaner data, consistent KPIs, and faster access to the operational signals they need to act.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Hailstorm analysis gives field and engineering teams a clearer picture of how trackers behave during extreme weather — informing both product improvements and risk decisions.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Data standardization across enterprise systems lays the foundation for more reliable long-term analytics across the organization.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Cleaner cross-team data:</span> reliability, warranty, service, and engineering teams now have cleaner data, consistent KPIs, and faster access to the operational signals they need to act.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Clearer weather-risk visibility:</span> hailstorm analysis gives field and engineering teams a clearer picture of how trackers behave during extreme weather — informing both product improvements and risk decisions.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Long-term analytics foundation:</span> data standardization across enterprise systems lays the foundation for more reliable long-term analytics across the organization.</p></li>
             </ul>
           </article>
 
           <article class="exp-card">
             <div class="exp-card-header">
               <div>
-                <h3 class="exp-role">Senior Data Analytics Engineer</h3>
+                <h3 class="exp-role">Senior Data Analytics Engineer - Data Science Focus</h3>
                 <p class="exp-company">Nikola Motor Company</p>
               </div>
               <p class="exp-date">06/2024 – 12/2024</p>
             </div>
             <p class="exp-subhead">What I Build</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Large-scale analytics pipelines supporting ADAS development, vehicle health monitoring, and engineering analysis across Camera, LiDAR, SRR, MRR, and LRR sensor systems.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Automated ingestion and processing workflows for vehicle telemetry and time-series datasets stored in AWS S3.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Grafana and QuickSight dashboards for monitoring vehicle health, diagnostic trends, and operational performance — replacing slow, manual review processes.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Python CRON automation to detect and transfer critical HIL sensor data during off-peak network windows, eliminating transfer failures and delays.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Computer vision workflows using segmentation models and Florence to extract structured information from large-scale video sensor data at scale.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Data preparation and labeling workflows for deep learning, ADAS feature development, and safety-component selection.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">SQL optimization and query architecture for multi-million-record datasets used in day-to-day engineering analysis.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">ADAS KPI frameworks aligned with HMI market needs and safety standards.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Large-scale analytics pipelines:</span> supporting ADAS development, vehicle health monitoring, and engineering analysis across Camera, LiDAR, SRR, MRR, and LRR sensor systems.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Automated ingestion and processing workflows:</span> for vehicle telemetry and time-series datasets stored in AWS S3.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Grafana and QuickSight dashboards:</span> for monitoring vehicle health, diagnostic trends, and operational performance — replacing slow, manual review processes.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Python CRON automation:</span> to detect and transfer critical HIL sensor data during off-peak network windows, eliminating transfer failures and delays.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Computer vision workflows:</span> using segmentation models and Florence to extract structured information from large-scale video sensor data at scale.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Data preparation and labeling workflows:</span> for deep learning, ADAS feature development, and safety-component selection.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">SQL optimization and query architecture:</span> for multi-million-record datasets used in day-to-day engineering analysis.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">ADAS KPI frameworks:</span> aligned with HMI market needs and safety standards.</p></li>
             </ul>
             <p class="exp-subhead">Impact</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Cut vehicle health monitoring turnaround from over 3 days to under 2 hours — giving ADAS and engineering teams significantly faster access to diagnostics.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Processed and analyzed over 200 TB of multi-modal sensor data across five sensor types.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Improved SQL query response time from 60+ seconds to under 20 seconds on multi-million-record datasets.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Faster diagnostics turnaround:</span> cut vehicle health monitoring turnaround from over 3 days to under 2 hours — giving ADAS and engineering teams significantly faster access to diagnostics.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Large-scale sensor processing:</span> processed and analyzed over 200 TB of multi-modal sensor data across five sensor types.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Faster query performance:</span> improved SQL query response time from 60+ seconds to under 20 seconds on multi-million-record datasets.</p></li>
             </ul>
           </article>
 
@@ -1369,45 +1613,45 @@
             </div>
             <p class="exp-subhead">What I Build</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Enterprise-scale ETL pipelines supporting analytics, reporting, and cross-functional BI needs — built on BigQuery, Dataflow, Cloud Composer, Airflow, and Data Fusion.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Data quality monitoring frameworks that proactively caught pipeline failures before they surfaced in downstream reports.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Alteryx automation workflows that replaced repetitive manual reporting steps — freeing analysts to focus on higher-value work.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">QlikSense and Looker dashboards delivering operational and performance insights to business stakeholders in near real time.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Data validation and governance processes that made enterprise reporting data more consistent and trustworthy across teams.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Enterprise-scale ETL pipelines:</span> supporting analytics, reporting, and cross-functional BI needs — built on BigQuery, Dataflow, Cloud Composer, Airflow, and Data Fusion.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Data quality monitoring frameworks:</span> that proactively caught pipeline failures before they surfaced in downstream reports.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Alteryx automation workflows:</span> that replaced repetitive manual reporting steps — freeing analysts to focus on higher-value work.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">QlikSense and Looker dashboards:</span> delivering operational and performance insights to business stakeholders in near real time.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Data validation and governance processes:</span> that made enterprise reporting data more consistent and trustworthy across teams.</p></li>
             </ul>
             <p class="exp-subhead">Impact</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Reduced monthly production pipeline alerts from 50+ to under 20 through proactive data quality controls — a 60% reduction.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Cut weekly reporting effort from 10 hours to under 2 hours through pipeline automation — an 80% time savings.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Improved BigQuery data availability by approximately 70%, and delivered real-time KPI visibility to 10+ stakeholders across the business.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Fewer pipeline alerts:</span> reduced monthly production pipeline alerts from 50+ to under 20 through proactive data quality controls — a 60% reduction.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Faster reporting:</span> cut weekly reporting effort from 10 hours to under 2 hours through pipeline automation — an 80% time savings.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Improved data availability:</span> improved BigQuery data availability by approximately 70%, and delivered real-time KPI visibility to 10+ stakeholders across the business.</p></li>
             </ul>
           </article>
 
           <article class="exp-card">
             <div class="exp-card-header">
               <div>
-                <h3 class="exp-role">Analytics, Digital Marketing</h3>
+                <h3 class="exp-role">Analytics, Digital Marketing - Machine Learning Focus</h3>
                 <p class="exp-company">Bed Bath &amp; Beyond</p>
               </div>
               <p class="exp-date">09/2021 – 04/2023</p>
             </div>
             <p class="exp-subhead">What I Build</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Marketing analytics solutions covering paid search, paid social, affiliate, SEO, programmatic display, and e-commerce performance.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Interactive dashboards in Tableau, Power BI, and MicroStrategy for campaign monitoring and marketing decision-making across brand and performance teams.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Multi-touch attribution and marketing mix modeling to identify which channels and touchpoints were actually driving revenue — not just last-click conversions.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">A/B testing frameworks for validating campaign changes, bidding strategies, and customer experience improvements with statistical rigor.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Customer behavior analytics using Adobe Analytics and Google Analytics to understand traffic patterns, conversion funnels, and checkout drop-off points.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Cohort analysis and segmentation to identify high-value customer groups and tailor campaigns accordingly.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">KPI reporting systems tracking ROAS, CPC, CTR, conversion rate, campaign turnaround, and revenue performance in a single source of truth.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Marketing analytics solutions:</span> covering paid search, paid social, affiliate, SEO, programmatic display, and e-commerce performance.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Interactive dashboards:</span> in Tableau, Power BI, and MicroStrategy for campaign monitoring and marketing decision-making across brand and performance teams.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Multi-touch attribution and marketing mix modeling:</span> to identify which channels and touchpoints were actually driving revenue — not just last-click conversions.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">A/B testing frameworks:</span> for validating campaign changes, bidding strategies, and customer experience improvements with statistical rigor.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Customer behavior analytics:</span> using Adobe Analytics and Google Analytics to understand traffic patterns, conversion funnels, and checkout drop-off points.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Cohort analysis and segmentation:</span> to identify high-value customer groups and tailor campaigns accordingly.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">KPI reporting systems:</span> tracking ROAS, CPC, CTR, conversion rate, campaign turnaround, and revenue performance in a single source of truth.</p></li>
             </ul>
             <p class="exp-subhead">Impact</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Cut campaign review time from 4 hours to 1 hour — a 75% reduction — through consolidated dashboarding.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Improved marketing spend efficiency by 10–15% through attribution modeling and smarter budget allocation.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Raised conversion rate by 12% and click-through rate by 15% through targeted campaign optimization and audience segmentation.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Shortened campaign turnaround time from 2 weeks to 5 days through workflow automation and better cross-team data access.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Identified a 10% checkout drop-off and surfaced the top 3 friction points for the product team to address.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Faster campaign review:</span> cut campaign review time from 4 hours to 1 hour — a 75% reduction — through consolidated dashboarding.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">More efficient spend:</span> improved marketing spend efficiency by 10–15% through attribution modeling and smarter budget allocation.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Higher conversion & CTR:</span> raised conversion rate by 12% and click-through rate by 15% through targeted campaign optimization and audience segmentation.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Faster campaign turnaround:</span> shortened campaign turnaround time from 2 weeks to 5 days through workflow automation and better cross-team data access.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Checkout friction identified:</span> identified a 10% checkout drop-off and surfaced the top 3 friction points for the product team to address.</p></li>
             </ul>
           </article>
 
@@ -1421,16 +1665,16 @@
             </div>
             <p class="exp-subhead">What I Build</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Web analytics dashboards using Google Analytics to monitor traffic, engagement, and campaign performance across digital channels.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Customer behavior and product-preference analysis frameworks to help product and marketing teams understand what users actually wanted.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Customer segmentation models to support more targeted marketing and improve revenue attribution.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Product usage reporting and KPI tracking to surface opportunities for feature and experience improvements.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Web analytics dashboards:</span> using Google Analytics to monitor traffic, engagement, and campaign performance across digital channels.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Customer behavior and product-preference analysis frameworks:</span> to help product and marketing teams understand what users actually wanted.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Customer segmentation models:</span> to support more targeted marketing and improve revenue attribution.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Product usage reporting and KPI tracking:</span> to surface opportunities for feature and experience improvements.</p></li>
             </ul>
             <p class="exp-subhead">Impact</p>
             <ul class="exp-bullets">
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Contributed to a 15–20% increase in web engagement by giving the team clearer visibility into what was driving user behavior.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Segmentation work enabled more targeted campaigns and helped the marketing team prioritize spend more effectively.</p></li>
-              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text">Provided product and marketing teams with quantitative evidence to back roadmap and experience decisions.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Higher web engagement:</span> contributed to a 15–20% increase in web engagement by giving the team clearer visibility into what was driving user behavior.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">More targeted campaigns:</span> segmentation work enabled more targeted campaigns and helped the marketing team prioritize spend more effectively.</p></li>
+              <li class="exp-bullet"><span class="bullet-dot"></span><p class="bullet-text"><span class="bullet-label">Data-backed roadmap decisions:</span> provided product and marketing teams with quantitative evidence to back roadmap and experience decisions.</p></li>
             </ul>
           </article>
 
@@ -1438,6 +1682,30 @@
       </div>
     </div>
   </section>
+
+
+ <!-- ── TESTIMONIALS ───────────────────────────────────────── -->
+   <!-- <section class="section" id="testimonials">
+    <div class="section-grid">
+      <div class="section-sidebar">
+        <p class="section-eyebrow">Testimonials</p>
+        <h2>What people say</h2>
+      </div>
+      <div class="section-body reveal">
+        <p class="section-intro">[FILL IN — replace these with real excerpts from your LinkedIn recommendations at linkedin.com/in/sonalbhor. Aim for 2-4 quotes from managers or senior collaborators, trimmed to 2-3 sentences each.]</p>
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <p class="testimonial-quote">"[Insert 2-3 sentence excerpt from a LinkedIn recommendation here — focus on a specific project or strength they called out.]"</p>
+            <p class="testimonial-author"><strong>[Name]</strong> · [Title] at [Company]</p>
+          </article>
+          <article class="testimonial-card">
+            <p class="testimonial-quote">"[Insert 2-3 sentence excerpt from a LinkedIn recommendation here — focus on a specific project or strength they called out.]"</p>
+            <p class="testimonial-author"><strong>[Name]</strong> · [Title] at [Company]</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
  <!-- ── SKILLS ─────────────────────────────────────────────── -->
 <section class="section" id="skills">
@@ -1669,6 +1937,10 @@
             </a>
           </div>
         </div>
+        <!--<a href="[CALENDLY_URL]" target="_blank" rel="noopener" class="btn-schedule">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule a 15-min call -->
+        </a>
       </div>
     </div>
   </section>
@@ -1760,6 +2032,15 @@
     });
   }, { threshold: 0.04 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  function toggleCaseStudy(btn) {
+    const card = btn.closest('.card-inner');
+    const impact = card.querySelector('.card-impact');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    impact.classList.toggle('open', !expanded);
+    btn.childNodes[0].nodeValue = expanded ? 'Read full case study' : 'Show less';
+  }
 
   const sections = document.querySelectorAll('#about, #projects, #experience, #skills, #education, #contact');
   const navBtns  = document.querySelectorAll('.nav-btn');
